@@ -1,3 +1,4 @@
+import CONF from '../../conf.toml';
 import 'regenerator-runtime/runtime';
 import Vue from 'vue';
 import App from './components/app.vue';
@@ -5,16 +6,16 @@ import VueSocketIO from 'vue-socket.io'
 import { Store } from './store.js';
 
 const vueSocket = new VueSocketIO({
-    connection : 'http://localhost:3000',
-    debug : true
+    connection : CONF.app.server,
+    debug : CONF.global.debug
 })
-
-const DEFAULT_SCREEN = 'index';
 
 Vue.use(vueSocket);
 
 (async function() {
-    const store = new Store({});
+    const store = new Store({
+        conf : CONF
+    });
 
     new Vue({
         el : "main",
@@ -28,7 +29,7 @@ Vue.use(vueSocket);
                 if (!!hash) {
                     this.$store.commit('screen', hash);
                 } else {
-                    this.$store.commit('screen', DEFAULT_SCREEN);
+                    this.$store.commit('screen', CONF.app.default_screen);
                 }
             },
 

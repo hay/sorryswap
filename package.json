@@ -6,7 +6,7 @@
   "scripts": {
     "app-build": "rm -rf dist && parcel build --public-url '.' app/index.html",
     "app-dev": "parcel app/index.html",
-    "dev" : "node index.js & npm run app-dev"
+    "dev": "node index.js & npm run app-dev"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
@@ -15,6 +15,7 @@
     "staticPath": "app/static"
   },
   "dependencies": {
+    "@iarna/toml": "^2.2.3",
     "es6-promise": "^4.2.8",
     "express": "^4.17.1",
     "npm-check-updates": "^4.0.1",

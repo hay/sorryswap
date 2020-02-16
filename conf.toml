@@ -1,0 +1,15 @@
+[global]
+debug = true
+
+[server]
+port = 3000
+static_path = "dist"
+
+[app]
+default_screen = 'index'
+screens = ['index', 'log', 'recorder']
+server = "http://localhost:3000"
+
+[app.cam]
+width = 1280
+height = 720

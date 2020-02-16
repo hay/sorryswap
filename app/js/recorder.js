@@ -1,3 +1,5 @@
+import CONF from '../../conf.toml';
+
 export default class Recorder {
     constructor(opts) {
         this.videoEl = opts.videoEl;
@@ -20,8 +22,8 @@ export default class Recorder {
             type: 'video',
 
             canvas : {
-                width : 1280,
-                height : 720
+                width : CONF.app.cam.width,
+                height : CONF.app.cam.height
             }
         });
 

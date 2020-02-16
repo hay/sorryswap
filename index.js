@@ -1,13 +1,17 @@
+const CONF = require('./conf.js')();
+console.log('Loaded config', JSON.stringify(CONF, null, 4));
+
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
 
 const app = express();
-const static = express.static('dist');
+const static = express.static(CONF.server.static_path);
 app.use(static);
+
 const server = http.Server(app);
 const io = socketio.listen(server);
-const PORT = 3000;
+const PORT = CONF.server.port;
 
 server.listen(PORT, () => {
     console.log(`listening on *:${PORT}`);
@@ -20,9 +24,4 @@ server.listen(PORT, () => {
             io.emit('log', msg);
         });
     });
-
-    // setInterval(() => {
-    //     let datetime = new Date().toISOString().slice(0, 19);
-    //     io.emit('time', datetime);
-    // }, 1000);
 });

@@ -12,7 +12,7 @@
 export default {
     computed : {
         log() {
-            return this.logMessages.join('\n');
+            return this.logMessages.reverse().join('\n');
         }
     },
 

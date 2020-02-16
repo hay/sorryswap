@@ -3,9 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 
-const SCREENS = ['index', 'log', 'recorder'];
-
-// FIXME
+// Global logger to communicate with the server
 function logger(store) {
     store.subscribe((mutation, state) => {
         if (window.__logger__) {
@@ -15,10 +13,11 @@ function logger(store) {
 }
 
 export class Store {
-    constructor(data) {
+    constructor(opts) {
         function getInitialState() {
             return {
-                screen : 'index'
+                conf : opts.conf,
+                screen : opts.conf.default_screen
             };
         }
 
@@ -29,7 +28,7 @@ export class Store {
 
             getters : {
                 isScreen(state) {
-                    return SCREENS.includes(state.screen);
+                    return state.conf.app.screens.includes(state.screen);
                 }
             },
 
