@@ -1,10 +1,12 @@
 import CONF from '../../conf.toml';
+import { RecordRTCPromisesHandler } from 'recordrtc';
 
 export default class Recorder {
     constructor(opts) {
         this.videoEl = opts.videoEl;
         this.stream = null;
         this.recorder = null;
+        this.uploadEndpoint = CONF.app.server + CONF.app.upload_endpoint;
     }
 
     async setupStream() {
@@ -18,7 +20,7 @@ export default class Recorder {
     }
 
     async start() {
-        this.recorder = new window.RecordRTCPromisesHandler(this.stream, {
+        this.recorder = new RecordRTCPromisesHandler(this.stream, {
             type: 'video',
 
             canvas : {
@@ -42,9 +44,9 @@ export default class Recorder {
         });
 
         let data = new FormData();
-        data.append('video-blob', blob);
+        data.append('video', blob);
 
-        let req = await window.fetch('save.php', {
+        let req = await window.fetch(this.uploadEndpoint, {
             method : 'POST',
             body : data
         });

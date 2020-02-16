@@ -4,11 +4,13 @@ debug = true
 [server]
 port = 3000
 static_path = "dist"
+upload_path = "files/uploads/"
 
 [app]
 default_screen = 'index'
 screens = ['index', 'log', 'recorder']
 server = "http://localhost:3000"
+upload_endpoint = "/upload"
 
 [app.cam]
 width = 1280
