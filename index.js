@@ -11,10 +11,9 @@ const PORT = 3000;
 
 server.listen(PORT, () => {
     console.log(`listening on *:${PORT}`);
-    let index = 1;
 
     setInterval(() => {
-        io.emit('index', index);
-        index += 1;
+        let datetime = new Date().toISOString().slice(0, 19);
+        io.emit('time', datetime);
     }, 1000);
 });

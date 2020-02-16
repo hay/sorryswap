@@ -1,26 +1,28 @@
 <template>
     <div>
-        <h1>Hello, world!!!</h1>
-
-        <h2>{{index}}</h2>
+        <screen-index v-if="screen === 'index'"></screen-index>
+        <screen-recorder v-if="screen === 'recorder'"></screen-recorder>
+        <pre v-if="!isScreen">Invalid screen</pre>
     </div>
 </template>
 
 <script>
+    import ScreenIndex from './screen-index.vue';
+    import ScreenRecorder from './screen-recorder.vue';
+
     export default {
-        data() {
-            return {
-                index : 0
-            };
+        components : {
+            ScreenIndex,
+            ScreenRecorder
         },
 
-        sockets : {
-            connect() {
-                console.log('connect');
+        computed : {
+            isScreen() {
+                return this.$store.getters.isScreen;
             },
 
-            index(index) {
-                this.index = index;
+            screen() {
+                return this.$store.state.screen;
             }
         }
     }

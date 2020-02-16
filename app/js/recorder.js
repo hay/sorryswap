@@ -16,7 +16,7 @@ export default class Recorder {
     }
 
     async start() {
-        this.recorder = new RecordRTCPromisesHandler(this.stream, {
+        this.recorder = new window.RecordRTCPromisesHandler(this.stream, {
             type: 'video',
             canvas : {
                 width : 1280,

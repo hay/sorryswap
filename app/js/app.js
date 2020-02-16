@@ -19,6 +19,21 @@ Vue.use(vueSocket);
 
         components : { App },
 
+        methods : {
+            go() {
+                const hash = window.location.hash.slice(1);
+
+                if (!!hash) {
+                    this.$store.commit('screen', hash);
+                }
+            }
+        },
+
+        mounted() {
+            window.addEventListener('hashchange', this.go.bind(this));
+            this.go();
+        },
+
         render: h => h( App ),
 
         store : store.getStore()
