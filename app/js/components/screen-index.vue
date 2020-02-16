@@ -10,6 +10,8 @@
             <li><a href="#recorder">Recorder</a></li>
         </ul>
 
+        <button v-on:click="echo">echo</button>
+
         <pre>
             {{log}}
         </pre>
@@ -31,9 +33,22 @@ export default {
         };
     },
 
+    methods : {
+        echo() {
+            console.log('echo');
+
+            this.$socket.emit('clientlog', Date.now());
+        }
+    },
+
     sockets : {
         connect() {
             this.logMessages.push('Connected');
+        },
+
+        log(msg) {
+            console.log('log!', msg);
+            this.logMessages.push(msg);
         },
 
         time(time) {

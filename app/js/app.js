@@ -9,6 +9,8 @@ const vueSocket = new VueSocketIO({
     debug : true
 })
 
+const DEFAULT_SCREEN = 'index';
+
 Vue.use(vueSocket);
 
 (async function() {
@@ -25,6 +27,16 @@ Vue.use(vueSocket);
 
                 if (!!hash) {
                     this.$store.commit('screen', hash);
+                } else {
+                    this.$store.commit('screen', DEFAULT_SCREEN);
+                }
+            },
+
+            setupLogger() {
+                window.__logger__ = function(mutation, state) {
+                    console.log('logger', mutation);
+
+                    this.$socket.emit('clientlog', mutation);
                 }
             }
         },
@@ -32,6 +44,7 @@ Vue.use(vueSocket);
         mounted() {
             window.addEventListener('hashchange', this.go.bind(this));
             this.go();
+            this.setupLogger();
         },
 
         render: h => h( App ),

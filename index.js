@@ -12,8 +12,17 @@ const PORT = 3000;
 server.listen(PORT, () => {
     console.log(`listening on *:${PORT}`);
 
-    setInterval(() => {
-        let datetime = new Date().toISOString().slice(0, 19);
-        io.emit('time', datetime);
-    }, 1000);
+    io.on('connection', (socket) => {
+        console.log('connected!');
+
+        socket.on('clientlog', (msg) => {
+            console.log('clientlog', msg);
+            io.emit('log', msg);
+        });
+    });
+
+    // setInterval(() => {
+    //     let datetime = new Date().toISOString().slice(0, 19);
+    //     io.emit('time', datetime);
+    // }, 1000);
 });

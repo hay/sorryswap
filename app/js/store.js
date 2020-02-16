@@ -5,6 +5,15 @@ Vue.use(Vuex);
 
 const SCREENS = ['index', 'recorder'];
 
+// FIXME
+function logger(store) {
+    store.subscribe((mutation, state) => {
+        if (window.__logger__) {
+            __logger__(mutation, state);
+        }
+    });
+}
+
 export class Store {
     constructor(data) {
         function getInitialState() {
@@ -14,6 +23,8 @@ export class Store {
         }
 
         this.store = new Vuex.Store({
+            plugins : [ logger ],
+
             state : getInitialState(),
 
             getters : {
