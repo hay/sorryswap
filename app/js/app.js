@@ -33,10 +33,9 @@ Vue.use(vueSocket);
             },
 
             setupLogger() {
-                window.__logger__ = function(mutation, state) {
-                    console.log('logger', mutation);
-
-                    this.$socket.emit('clientlog', mutation);
+                window.__logger__ = (mutation, state) => {
+                    const msg = `${mutation.type}:${mutation.payload}`;
+                    this.$socket.emit('clientlog', msg);
                 }
             }
         },

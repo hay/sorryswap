@@ -3,7 +3,7 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex);
 
-const SCREENS = ['index', 'recorder'];
+const SCREENS = ['index', 'log', 'recorder'];
 
 // FIXME
 function logger(store) {

@@ -1,6 +1,7 @@
 <template>
     <div>
         <screen-index v-if="screen === 'index'"></screen-index>
+        <screen-log v-if="screen === 'log'"></screen-log>
         <screen-recorder v-if="screen === 'recorder'"></screen-recorder>
         <pre v-if="!isScreen">Invalid screen</pre>
     </div>
@@ -8,11 +9,13 @@
 
 <script>
     import ScreenIndex from './screen-index.vue';
+    import ScreenLog from './screen-log.vue';
     import ScreenRecorder from './screen-recorder.vue';
 
     export default {
         components : {
             ScreenIndex,
+            ScreenLog,
             ScreenRecorder
         },
 
