@@ -2,9 +2,14 @@
 debug = true
 
 [server]
+allowed_upload_mimetypes = ['video/webm']
 log_path = "logs/server.log"
+output_path = "files/output/"
+output_video_extension = "mp4"
 port = 3000
 static_path = "dist"
+target_path = "files/target/"
+upload_video_extension = "webm"
 upload_path = "files/uploads/"
 
 [app]
@@ -16,3 +21,6 @@ upload_endpoint = "/upload"
 [app.cam]
 width = 1280
 height = 720
+
+[errors]
+invalid_mimetype = ["415", "Invalid mimetype"]

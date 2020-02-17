@@ -6,6 +6,7 @@ export default class Recorder {
         this.videoEl = opts.videoEl;
         this.stream = null;
         this.recorder = null;
+        this.meta = {};
         this.uploadEndpoint = CONF.app.server + CONF.app.upload_endpoint;
     }
 
@@ -19,7 +20,8 @@ export default class Recorder {
         this.videoEl.srcObject = this.stream;
     }
 
-    async start() {
+    async start(meta) {
+        this.meta = meta;
         this.recorder = new RecordRTCPromisesHandler(this.stream, {
             type: 'video',
 
@@ -44,6 +46,7 @@ export default class Recorder {
         });
 
         let data = new FormData();
+        data.append('meta', JSON.stringify(this.meta));
         data.append('video', blob);
 
         let req = await window.fetch(this.uploadEndpoint, {
