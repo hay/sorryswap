@@ -4,38 +4,20 @@ console.log('Loaded config', JSON.stringify(CONF, null, 4));
 const express = require('express');
 const http = require('http');
 const socketio = require('socket.io');
-const multer = require('multer');
+
+const Server = require('./server/Server.js');
 
 // Setup express
 const app = express();
 
-// Static stuff
-const static = express.static(CONF.server.static_path);
-app.use(static);
+// Socket.io
+const httpserver = http.Server(app);
+const io = socketio.listen(httpserver);
 
-// File uploads
-const upload = multer({
-    dest : CONF.server.upload_path
-});
-app.post('/upload', upload.single('video'), (req, res) => {
-    console.log(res);
+const server = new Server({
+    app : app,
+    io : io,
+    server : httpserver
 });
 
-// Socet.io
-const server = http.Server(app);
-const io = socketio.listen(server);
-const PORT = CONF.server.port;
-
-// Main loop
-server.listen(PORT, () => {
-    console.log(`listening on *:${PORT}`);
-
-    io.on('connection', (socket) => {
-        console.log('connected!');
-
-        socket.on('clientlog', (msg) => {
-            console.log('clientlog', msg);
-            io.emit('log', msg);
-        });
-    });
-});
+server.run();

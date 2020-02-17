@@ -2,6 +2,7 @@
 debug = true
 
 [server]
+log_path = "logs/server.log"
 port = 3000
 static_path = "dist"
 upload_path = "files/uploads/"
