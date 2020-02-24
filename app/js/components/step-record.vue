@@ -63,12 +63,18 @@
 
             async startCount() {
                 for (let i = 3; i >= 0; i--) {
-                    await timeout(1000);
                     this.count = i;
-                    this.$sounds.play('beep');
+
+                    if (i === 0) {
+                        this.$sounds.play('woopwoop');
+                    } else {
+                        this.$sounds.play('beep');
+                    }
+
+                    await timeout(1000);
                 }
 
-                this.$sounds.play('woopwoop');
+                await timeout(1000);
             },
 
             async stop() {

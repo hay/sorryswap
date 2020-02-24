@@ -7,6 +7,7 @@
         <step-record v-if="step === 'record'"></step-record>
         <step-replay v-if="step === 'replay'"></step-replay>
         <step-splash v-if="step === 'splash'"></step-splash>
+        <step-swap v-if="step === 'swap'"></step-swap>
     </div>
 </template>
 
@@ -18,6 +19,7 @@
     import StepRecord from './step-record.vue';
     import StepReplay from './step-replay.vue';
     import StepSplash from './step-splash.vue';
+    import StepSwap from './step-swap.vue';
 
     export default {
         components : {
@@ -27,7 +29,8 @@
             StepExplain,
             StepRecord,
             StepReplay,
-            StepSplash
+            StepSplash,
+            StepSwap
         },
 
         computed : {

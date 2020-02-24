@@ -6,12 +6,15 @@ const exec = util.promisify(require('child_process').exec);
 
 const CONF = require('../conf.js')();
 const Logger = require('./logger.js');
-const { getIsoDate } = './util.js';
+const { fileExists, getIsoDate, loadJson } = require('./util.js');
 
 class ServerError {
     constructor(e) {
         this.status = e[0];
-        this.message = e[1];
+        this.message = {
+            errorcode : e[0],
+            error : e[1]
+        };
     }
 }
 
@@ -30,6 +33,30 @@ module.exports = class Server {
         this.app.use(this.static);
         this.app.use('/files', express.static(CONF.server.files_path));
         this.setupUploads();
+        this.setupProcess();
+        this.setupInfo();
+    }
+
+    async getVideo(id) {
+         const uploadPath = CONF.server.upload_path;
+         const extension = CONF.server.upload_video_extension;
+         const videoPath = `${uploadPath}${id}.${extension}`;
+         const dataPath = `${uploadPath}${id}.json`;
+
+         // Check if these files exist
+         const videoExists = await fileExists(videoPath);
+         const dataExists = await fileExists(dataPath);
+
+         if (!videoExists || !dataExists) {
+             throw new ServerError(CONF.errors.video_not_found);
+             return;
+         }
+
+         const data = await loadJson(dataPath);
+
+         return {
+             data, dataPath, videoPath
+         };
     }
 
     async handleUpload(file, meta) {
@@ -67,13 +94,16 @@ module.exports = class Server {
 
     async processUpload(id) {
         this.log(`Process upload: ${id}`);
-        const uploadPath = CONF.server.upload_path;
+        // const uploadPath = CONF.server.upload_path;
         const outputPath = CONF.server.output_path;
-        const extension = CONF.server.upload_video_extension;
+        // const extension = CONF.server.upload_video_extension;
 
-        const input = `${uploadPath}${id}.${extension}`;
+        const inputVideo = await this.getVideo(id);
+        const targetVideo = inputVideo.data.targetVideo;
+
+        const input = inputVideo.videoPath;
         const output = `${outputPath}${id}.${CONF.server.output_video_extension}`;
-        const target = `${CONF.server.target_path}1.mp4`;
+        const target = `${CONF.server.target_path}${targetVideo}.mp4`;
 
         this.log(`Swapping ${input} on ${target} as ${output}`);
 
@@ -94,6 +124,32 @@ module.exports = class Server {
                     this.log('clientlog', msg);
                 });
             });
+        });
+    }
+
+    setupInfo() {
+        this.app.get('/info/:id', async (req, res) => {
+            let info;
+
+            try {
+                info = await this.getVideo(req.params.id);
+            } catch (e) {
+                res.status(e.status).send(e.message);
+            }
+
+            res.send(info);
+        });
+    }
+
+    setupProcess() {
+        this.app.get('/process/:id', async (req, res) => {
+            try {
+                await this.processUpload(req.params.id);
+            } catch (e) {
+                res.send('FAIL');
+            }
+
+            res.send(req.params.id);
         });
     }
 

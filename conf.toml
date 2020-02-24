@@ -16,6 +16,7 @@ upload_path = "files/uploads/"
 [app]
 default_screen = 'index'
 default_step = "splash"
+process_endpoint = "/process"
 recording_time = 30
 screens = ['index', 'log', 'recorder']
 server = "http://localhost:3000"
@@ -32,6 +33,7 @@ height = 720
 
 [errors]
 invalid_mimetype = ["415", "Invalid mimetype"]
+video_not_found = ["404", "Video with ID not found"]
 
 [[target]]
 id = "1"
