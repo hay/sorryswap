@@ -22,6 +22,7 @@ export default class Recorder {
 
     async start(meta) {
         this.meta = meta;
+
         this.recorder = new RecordRTCPromisesHandler(this.stream, {
             type: 'video',
 
