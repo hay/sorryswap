@@ -1,7 +1,9 @@
 .progress {
     @include wh(100%, 3rem);
     background: $c-3;
-    transition: 30s linear;
+    transition-timing-function: linear;
+    transition-duration: 30s;
+    align-self: flex-start;
 
     &[running] {
         width: 0%;

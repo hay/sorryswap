@@ -8,6 +8,7 @@ export default class Recorder {
         this.recorder = null;
         this.meta = {};
         this.uploadEndpoint = CONF.app.server + CONF.app.upload_endpoint;
+        this.videoId = null;
     }
 
     destroy() {
@@ -42,7 +43,8 @@ export default class Recorder {
     async stop() {
         await this.recorder.stopRecording();
         let blob = await this.recorder.getBlob();
-        this.upload(blob);
+        await this.upload(blob);
+        return this.videoId;
     }
 
     async upload(blob) {
@@ -59,6 +61,10 @@ export default class Recorder {
             body : data
         });
 
-        console.log(req);
+        if (req.ok) {
+            this.videoId = await req.text();
+        } else {
+            this.videoId = 'UPLOAD_ERROR';
+        }
     }
 }

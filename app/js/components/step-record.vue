@@ -2,12 +2,10 @@
     <div class="recorder__step">
         <div class="recorder__content">
             <div class="recorder__panels recorder__panels--vertical">
-                <section class="recorder__panel recorder__panel--start">
-                    <div class="progress"
-                         v-bind:running="recording"></div>
-                </section>
-
                 <section class="recorder__panel">
+                    <div class="progress"
+                         ref="progress"
+                         v-bind:running="recording"></div>
                     <video ref="video" autoplay playsinline></video>
                 </section>
 
@@ -41,7 +39,7 @@
                 count : 0,
                 recorder : null,
                 recording : false,
-                recordTime : this.$store.state.conf.app.record_time * 1000
+                recordingTime : this.$store.state.recordingTime
             }
         },
 
@@ -65,21 +63,27 @@
 
             async startCount() {
                 for (let i = 3; i >= 0; i--) {
-                    this.count = i;
                     await timeout(1000);
+                    this.count = i;
+                    this.$sounds.play('beep');
                 }
+
+                this.$sounds.play('woopwoop');
             },
 
-            stop() {
-                this.recorder.stop();
+            async stop() {
+                const id = await this.recorder.stop();
+                this.$store.commit('videoId', id);
+                this.$store.commit('step', 'replay');
             }
         },
 
         async mounted() {
+            this.$refs.progress.style.transitionDuration = this.recordingTime + 's';
             this.setupRecorder();
             await this.startCount();
             this.start();
-            await timeout(this.recordTime);
+            await timeout(this.recordingTime * 1000);
             this.stop();
         }
     }

@@ -19,6 +19,7 @@ export class Store {
             return {
                 conf : opts.conf,
                 muted : false,
+                recordingTime : opts.conf.app.recording_time,
                 screen : opts.conf.app.default_screen,
                 step : opts.conf.app.default_step,
                 targetScript : null,
@@ -28,7 +29,8 @@ export class Store {
                     target.src = `${opts.conf.server.target_path}${file}`;
                     return target;
                 }),
-                targetVideo : null
+                targetVideo : null,
+                videoId : null
             };
         }
 
@@ -68,6 +70,8 @@ export class Store {
             },
 
             mutations : {
+                recordingTime: (state, time) => state.recordingTime = parseInt(time),
+
                 screen: (state, screen) => state.screen = screen,
 
                 step(state, step) {
@@ -82,6 +86,10 @@ export class Store {
 
                 targetVideo(state, id) {
                     state.targetVideo = id;
+                },
+
+                videoId(state, id) {
+                    state.videoId = id;
                 }
             }
         });

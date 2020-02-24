@@ -16,13 +16,13 @@ upload_path = "files/uploads/"
 [app]
 default_screen = 'index'
 default_step = "splash"
-record_time = 30
+recording_time = 30
 screens = ['index', 'log', 'recorder']
 server = "http://localhost:3000"
 sounds = ["beep", "bla", "click", "jump", "music", "robot", "transform", "woopwoop", "wrong"]
 steps = [
     "splash", "explain", "choosevideo", "choosescript", "chooseconfirm", "record", "replay",
-    "send", "done"
+    "swap", "done"
 ]
 upload_endpoint = "/upload"
 

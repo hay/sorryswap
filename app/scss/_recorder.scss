@@ -97,13 +97,13 @@
         @include flex-center;
     }
 
-    &__panel--start {
-        align-items: flex-start;
-    }
-
     &__panel video {
         width: 100%;
         object-fit: contain;
+    }
+
+    &__singlepane {
+        margin-bottom: 2rem;
     }
 
     &__actions {

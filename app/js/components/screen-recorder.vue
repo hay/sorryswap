@@ -5,6 +5,7 @@
         <step-choosevideo v-if="step === 'choosevideo'"></step-choosevideo>
         <step-explain v-if="step === 'explain'"></step-explain>
         <step-record v-if="step === 'record'"></step-record>
+        <step-replay v-if="step === 'replay'"></step-replay>
         <step-splash v-if="step === 'splash'"></step-splash>
     </div>
 </template>
@@ -15,6 +16,7 @@
     import StepChoosevideo from './step-choosevideo.vue';
     import StepExplain from './step-explain.vue';
     import StepRecord from './step-record.vue';
+    import StepReplay from './step-replay.vue';
     import StepSplash from './step-splash.vue';
 
     export default {
@@ -24,6 +26,7 @@
             StepChoosevideo,
             StepExplain,
             StepRecord,
+            StepReplay,
             StepSplash
         },
 

@@ -108,9 +108,7 @@ module.exports = class Server {
                 res.status(e.status).send(e.message);
             }
 
-            res.send('ok');
-
-            this.processUpload(id);
+            res.send(id);
         });
     }
 }
