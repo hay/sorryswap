@@ -8,9 +8,7 @@
 
                 <p>Maak je welgemeende excuses zonder het te menen! Leg met 1 druk op de knop jouw ‘het spijt me’ in de mond van een beroemdheid die ooit al eens écht spijt had.</p>
 
-                <p>Neem de hartverscheurende tranen van Kim Kardashian of Laura lee, spreek er jouw eigen ‘welgemeende’ sorry bij in en hark vergeving op vergeving binnen voor al je zonden.</p>
-
-                <p>Jij komt vanaf nu overal mee weg.</p>
+                <p>Spreek jouw eigen ‘welgemeende’ sorry bij in en hark vergeving op vergeving binnen voor al je zonden!</p>
             </section>
 
             <button
