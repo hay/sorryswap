@@ -28,6 +28,7 @@ module.exports = class Server {
         });
 
         this.app.use(this.static);
+        this.app.use('/files', express.static(CONF.server.files_path));
         this.setupUploads();
     }
 

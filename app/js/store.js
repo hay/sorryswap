@@ -1,3 +1,4 @@
+import { find } from 'lodash';
 import Vue from 'vue'
 import Vuex from 'vuex'
 
@@ -19,7 +20,15 @@ export class Store {
                 conf : opts.conf,
                 muted : false,
                 screen : opts.conf.app.default_screen,
-                step : opts.conf.app.default_step
+                step : opts.conf.app.default_step,
+                targetScript : null,
+                targetScripts : opts.conf.script,
+                targetVideos : opts.conf.target.map((target) => {
+                    const file = `${target.id}.mp4`;
+                    target.src = `${opts.conf.server.target_path}${file}`;
+                    return target;
+                }),
+                targetVideo : null
             };
         }
 
@@ -31,6 +40,30 @@ export class Store {
             getters : {
                 isScreen(state) {
                     return state.conf.app.screens.includes(state.screen);
+                },
+
+                recordMeta(state) {
+                    return {
+                        recordTime : new Date().toISOString(),
+                        targetScript : state.targetScript,
+                        targetVideo : state.targetVideo
+                    }
+                },
+
+                targetScript(state) {
+                    if (!state.targetScript) {
+                        return null;
+                    }
+
+                    return find(state.targetScripts, ['name', state.targetScript]);
+                },
+
+                targetVideo(state) {
+                    if (!state.targetVideo) {
+                        return null;
+                    }
+
+                    return find(state.targetVideos, ['id', state.targetVideo]);
                 }
             },
 
@@ -41,6 +74,14 @@ export class Store {
                     if (state.conf.app.steps.includes(step)) {
                         state.step = step;
                     }
+                },
+
+                targetScript(state, script) {
+                    state.targetScript = script;
+                },
+
+                targetVideo(state, id) {
+                    state.targetVideo = id;
                 }
             }
         });

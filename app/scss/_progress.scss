@@ -1,0 +1,9 @@
+.progress {
+    @include wh(100%, 3rem);
+    background: $c-3;
+    transition: 30s linear;
+
+    &[running] {
+        width: 0%;
+    }
+}

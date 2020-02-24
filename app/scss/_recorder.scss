@@ -24,6 +24,26 @@
     }
 }
 
+@keyframes headline {
+    0% {
+        background: $c-1;
+        transform: scale(1);
+    }
+
+    25% {
+        background: $c-2;
+    }
+
+    50% {
+        background: $c-3;
+        transform: scale(1.5);
+    }
+
+    75% {
+        background: $c-5;
+    }
+}
+
 .recorder {
     font-family: $font-interface;
     background: $gradient-1;
@@ -56,6 +76,42 @@
 
     &__content {
         @include flex-center;
+        margin: 2rem;
+    }
+
+    &__panels {
+        display: grid;
+        grid-gap: 2rem;
+        margin: 2rem;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__panels--vertical {
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: inherit;
+        height: 100%;
+    }
+
+    &__panel {
+        width: 100%;
+        @include flex-center;
+    }
+
+    &__panel--start {
+        align-items: flex-start;
+    }
+
+    &__panel video {
+        width: 100%;
+        object-fit: contain;
+    }
+
+    &__actions {
+        display: flex;
+    }
+
+    &__actions > * {
+        margin: 0 1rem;
     }
 
     &__logo {
@@ -69,6 +125,19 @@
         max-width: 100rem;
     }
 
+    &__headline {
+        margin-bottom: 2rem;
+        font-size: 4rem;
+        animation: headline 4s linear infinite alternate;
+        padding: 1rem;
+    }
+
+    &__label {
+        margin-top: 1rem;
+        font-size: 2.5rem;
+        color: black;
+    }
+
     &__text {
         @include child-margins(2rem);
         background: rgba(white, 0.8);
@@ -79,6 +148,10 @@
         color: black;
         font-size: 3rem;
         line-height: 1.25;
+    }
+
+    &__text--small {
+        font-size: 2rem;
     }
 
     &__text p {
@@ -96,5 +169,12 @@
         border-radius: 1rem;
         padding: 1rem 2rem;
         animation: btn--big 2s infinite alternate
+    }
+
+    &__btn--normal {
+        font-size: 3rem;
+        text-align: center;
+        background: $c-5;
+        padding: 1rem;
     }
 }

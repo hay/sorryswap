@@ -1,0 +1,24 @@
+.mediagrid {
+    list-style: none;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+
+    li, button, &__video, &__textbutton {
+        @include wh(100%);
+    }
+
+    &__video {
+        object-fit: cover;
+        max-height: 25vh;
+    }
+
+    &__textbutton {
+        background: $c-5;
+        color: white;
+        text-align: center;
+        padding: 3rem;
+        border-radius: 1rem;
+        font-size: 4rem;
+    }
+}

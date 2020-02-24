@@ -10,6 +10,10 @@ export default class Recorder {
         this.uploadEndpoint = CONF.app.server + CONF.app.upload_endpoint;
     }
 
+    destroy() {
+        this.recorder.destroy();
+    }
+
     async setupStream() {
         this.stream = await navigator.mediaDevices.getUserMedia({
             video: true,
