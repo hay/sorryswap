@@ -1,0 +1,100 @@
+@keyframes bg {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.5);
+    }
+
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes btn--big {
+    from {
+        transform: rotate(0deg) scale(1);
+        background: $c-4;
+    }
+
+    to {
+        transform: rotate(-2deg) scale(1.2);
+        background: $c-3;
+    }
+}
+
+.recorder {
+    font-family: $font-interface;
+    background: $gradient-1;
+    color: white;
+
+    @include wh(100%, 100vh);
+    overflow: hidden;
+    @include flex-center;
+
+    &__step {
+        position: relative;
+        @include wh(100%);
+        padding: 2rem;
+    }
+
+    &__animation,
+    &__content {
+        position: absolute;
+        @include pos(0);
+    }
+
+    &__animation {
+        animation: bg 60s infinite linear;
+        opacity: 0.5;
+    }
+
+    &__animation img {
+        @include wh(100%);
+    }
+
+    &__content {
+        @include flex-center;
+    }
+
+    &__logo {
+        width: 100%;
+        max-width: 60rem;
+        margin-bottom: 2rem;
+    }
+
+    &__logo--splash {
+        margin-bottom: 10rem;
+        max-width: 100rem;
+    }
+
+    &__text {
+        @include child-margins(2rem);
+        background: rgba(white, 0.8);
+        padding: 2rem;
+        margin: 2rem;
+        max-width: 100rem;
+        text-align: center;
+        color: black;
+        font-size: 3rem;
+        line-height: 1.25;
+    }
+
+    &__text p {
+        font-family: $font-text;
+    }
+
+    &__btn {
+        color: white;
+    }
+
+    &__btn--big {
+        font-size: 5rem;
+        text-align: center;
+        background: $c-4;
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        animation: btn--big 2s infinite alternate
+    }
+}

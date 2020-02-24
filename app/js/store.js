@@ -17,7 +17,9 @@ export class Store {
         function getInitialState() {
             return {
                 conf : opts.conf,
-                screen : opts.conf.default_screen
+                muted : false,
+                screen : opts.conf.app.default_screen,
+                step : opts.conf.app.default_step
             };
         }
 
@@ -33,7 +35,13 @@ export class Store {
             },
 
             mutations : {
-                screen: (state, screen) => state.screen = screen
+                screen: (state, screen) => state.screen = screen,
+
+                step(state, step) {
+                    if (state.conf.app.steps.includes(step)) {
+                        state.step = step;
+                    }
+                }
             }
         });
     }

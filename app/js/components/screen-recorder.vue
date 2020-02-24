@@ -1,53 +1,32 @@
 <template>
-    <div>
-        Name: <input v-model="name" /><br />
-
-        <video ref="video" controls autoplay playsinline></video>
-
-        <button v-on:click="start">start</button>
-        <button v-on:click="stop">stop</button>
+    <div class="recorder">
+        <step-explain v-if="step === 'explain'"></step-explain>
+        <step-splash v-if="step === 'splash'"></step-splash>
     </div>
 </template>
 
 <script>
-    import Recorder from '../recorder.js';
-
-    let index = 1;
+    import StepSplash from './step-splash.vue';
+    import StepExplain from './step-explain.vue';
 
     export default {
-        data() {
-            return {
-                name : null,
-                recorder : null
+        components : {
+            StepExplain,
+            StepSplash
+        },
+
+        computed : {
+            step() {
+                return this.$store.state.step;
             }
         },
 
-        methods : {
-            setupRecorder() {
-                this.recorder = new Recorder({
-                    videoEl : this.$refs.video
-                });
-
-                this.recorder.setupStream();
-            },
-
-            start() {
-                this.recorder.start({
-                    index,
-                    name : this.name,
-                    startTime : new Date().toISOString()
-                });
-
-                index = index + 1;
-            },
-
-            stop() {
-                this.recorder.stop();
-            }
+        destroyed() {
+            this.$music.pause();
+            this.$sounds.pause();
         },
 
-        mounted( ){
-            this.setupRecorder();
+        mounted() {
         }
-    }
+    };
 </script>

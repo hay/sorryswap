@@ -4,7 +4,7 @@
 
         <ul>
             <li v-for="screen in screens">
-                <a v-bind:href="'#' + screen">{{screen}}</a>
+                <a v-bind:href="'#screen=' + screen">{{screen}}</a>
             </li>
         </ul>
 
