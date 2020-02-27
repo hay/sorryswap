@@ -63,6 +63,10 @@ name = "James Charles"
 id = "7"
 name = "Logan Paul (SD)"
 
+[[target]]
+id = "1b"
+name = "Laura Lee (kort)"
+
 [[script]]
 name = "Klimaat"
 text = """
