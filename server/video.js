@@ -5,11 +5,12 @@ const { fileExists, loadJson } = require('./util.js');
 class Video {
     constructor(id) {
         const conf = CONF.server;
-
+        this.conf = conf;
         this.uploadFilePath = `${conf.upload_path}/${id}.${conf.upload_video_extension}`;
         this.uploadDataPath = `${conf.upload_path}/${id}.json`;
         this.outputFilePath = `${conf.output_path}/${id}.${conf.output_video_extension}`;
         this.outputDataPath = `${conf.output_path}/${id}.json`;
+        this.targetVideo = null;
         this.data = null;
     }
 
@@ -24,6 +25,8 @@ class Video {
 
         if (uploadExists) {
             data.uploadData = await loadJson(this.uploadDataPath);
+            const targetVideo = data.uploadData.targetVideo;
+            this.targetVideo = `${this.conf.target_path}/${targetVideo}.mp4`;
         }
 
         this.data = data;

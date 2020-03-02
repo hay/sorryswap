@@ -1,5 +1,6 @@
 const fs = require('fs');
 const fsPromise = require('fs').promises;
+const pathlib = require('path');
 
 module.exports = {
     fileExists(path) {
@@ -17,6 +18,17 @@ module.exports = {
     async loadJson(path) {
         const data = await fsPromise.readFile(path, 'utf-8');
         return JSON.parse(data);
+    },
+
+    parsePath(path) {
+        const extension = pathlib.extname(path);
+
+        return {
+            originalPath : path,
+            basename : pathlib.basename(path),
+            extension : extension,
+            stem : pathlib.basename(path, extension)
+        };
     },
 
     async writeJson(path, data) {

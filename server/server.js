@@ -7,7 +7,7 @@ const exec = util.promisify(require('child_process').exec);
 
 const CONF = require('../conf.js')();
 const Logger = require('./logger.js');
-const { fileExists, getIsoDate, loadJson, writeJson } = require('./util.js');
+const { fileExists, getIsoDate, loadJson, writeJson, parsePath } = require('./util.js');
 const { ServerError } = require('./errors.js');
 const { Video } = require('./video.js');
 
@@ -77,7 +77,7 @@ module.exports = class Server {
 
         const input = video.uploadFilePath;
         const output = video.outputFilePath;
-        const target = video.uploadData.targetVideo;
+        const target = video.targetVideo;
 
         this.log(`Swapping ${input} on ${target} as ${output}`);
 
@@ -86,10 +86,12 @@ module.exports = class Server {
         console.log(stdout, stderr);
 
         // Also write the moment we have swapped this file and total time it took
-        const data = video.uploadData;
-        data.swapTime = Date.now() - startTime;
+        const data = video.data.uploadData;
+        data.swapTime = (Date.now() - startTime) / 1000;
         data.swapDate = (new Date()).toISOString();
-        writeJson(video.outputDataPath);
+        writeJson(video.outputDataPath, data);
+
+        console.log(`${id} has been swapped`);
     }
 
     run() {
@@ -129,8 +131,15 @@ module.exports = class Server {
 
             // Now loop over the videos and get json data, and
             // return that
+            const output = [];
 
-            res.send(videos);
+            const ids = videos.map(parsePath).map(p => p.stem);
+
+            for (const id of ids) {
+                output.push(await this.getVideo(id));
+            }
+
+            res.send(output);
         });
     }
 
@@ -139,6 +148,7 @@ module.exports = class Server {
             try {
                 await this.processUpload(req.params.id);
             } catch (e) {
+                console.log(e);
                 res.send('FAIL');
             }
 

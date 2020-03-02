@@ -26,7 +26,7 @@ export class Store {
                 targetScripts : opts.conf.script,
                 targetVideos : opts.conf.target.map((target) => {
                     const file = `${target.id}.mp4`;
-                    target.src = `${opts.conf.server.target_path}${file}`;
+                    target.src = `${opts.conf.server.target_path}/${file}`;
                     return target;
                 }),
                 targetVideo : null,
