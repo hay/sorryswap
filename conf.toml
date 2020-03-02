@@ -5,13 +5,13 @@ debug = true
 allowed_upload_mimetypes = ['video/webm']
 files_path = "files"
 log_path = "logs/server.log"
-output_path = "files/output/"
+output_path = "files/output"
 output_video_extension = "mp4"
 port = 3000
 static_path = "dist"
-target_path = "files/target/"
+target_path = "files/target"
 upload_video_extension = "webm"
-upload_path = "files/uploads/"
+upload_path = "files/uploads"
 
 [app]
 default_screen = 'index'

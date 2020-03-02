@@ -1,22 +1,15 @@
 const express = require('express');
 const fs = require('fs').promises;
+const glob = require('glob-promise').promise;
 const multer = require('multer');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
 const CONF = require('../conf.js')();
 const Logger = require('./logger.js');
-const { fileExists, getIsoDate, loadJson } = require('./util.js');
-
-class ServerError {
-    constructor(e) {
-        this.status = e[0];
-        this.message = {
-            errorcode : e[0],
-            error : e[1]
-        };
-    }
-}
+const { fileExists, getIsoDate, loadJson, writeJson } = require('./util.js');
+const { ServerError } = require('./errors.js');
+const { Video } = require('./video.js');
 
 module.exports = class Server {
     constructor({ app, io, server }) {
@@ -35,28 +28,12 @@ module.exports = class Server {
         this.setupUploads();
         this.setupProcess();
         this.setupInfo();
+        this.setupOutput();
     }
 
     async getVideo(id) {
-         const uploadPath = CONF.server.upload_path;
-         const extension = CONF.server.upload_video_extension;
-         const videoPath = `${uploadPath}${id}.${extension}`;
-         const dataPath = `${uploadPath}${id}.json`;
-
-         // Check if these files exist
-         const videoExists = await fileExists(videoPath);
-         const dataExists = await fileExists(dataPath);
-
-         if (!videoExists || !dataExists) {
-             throw new ServerError(CONF.errors.video_not_found);
-             return;
-         }
-
-         const data = await loadJson(dataPath);
-
-         return {
-             data, dataPath, videoPath
-         };
+        const video = new Video(id);
+        return await video.getData();
     }
 
     async handleUpload(file, meta) {
@@ -94,23 +71,25 @@ module.exports = class Server {
 
     async processUpload(id) {
         this.log(`Process upload: ${id}`);
-        // const uploadPath = CONF.server.upload_path;
-        const outputPath = CONF.server.output_path;
-        // const extension = CONF.server.upload_video_extension;
+        const startTime = Date.now();
+        const video = new Video(id);
+        await video.getData();
 
-        const inputVideo = await this.getVideo(id);
-        const targetVideo = inputVideo.data.targetVideo;
-
-        const input = inputVideo.videoPath;
-        const output = `${outputPath}${id}.${CONF.server.output_video_extension}`;
-        const target = `${CONF.server.target_path}${targetVideo}.mp4`;
+        const input = video.uploadFilePath;
+        const output = video.outputFilePath;
+        const target = video.uploadData.targetVideo;
 
         this.log(`Swapping ${input} on ${target} as ${output}`);
 
         const cmd = `facetool swap -i ${input} -t ${target} -o ${output} --only-mouth`;
         const { stdout, stderr } = await exec(cmd);
-
         console.log(stdout, stderr);
+
+        // Also write the moment we have swapped this file and total time it took
+        const data = video.uploadData;
+        data.swapTime = Date.now() - startTime;
+        data.swapDate = (new Date()).toISOString();
+        writeJson(video.outputDataPath);
     }
 
     run() {
@@ -134,10 +113,24 @@ module.exports = class Server {
             try {
                 info = await this.getVideo(req.params.id);
             } catch (e) {
+                console.log(e);
                 res.status(e.status).send(e.message);
             }
 
             res.send(info);
+        });
+    }
+
+    setupOutput() {
+        this.app.get('/output', async (req, res) => {
+            const ext = CONF.server.output_video_extension;
+            const path = CONF.server.output_path;
+            const videos = await glob(`${path}/*.${ext}`);
+
+            // Now loop over the videos and get json data, and
+            // return that
+
+            res.send(videos);
         });
     }
 

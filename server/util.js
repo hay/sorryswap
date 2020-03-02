@@ -17,5 +17,10 @@ module.exports = {
     async loadJson(path) {
         const data = await fsPromise.readFile(path, 'utf-8');
         return JSON.parse(data);
+    },
+
+    async writeJson(path, data) {
+        const json = JSON.stringify(data, null, 4);
+        await fsPromise.writeFile(path, json, 'utf-8');
     }
 };
