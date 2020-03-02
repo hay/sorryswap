@@ -51,6 +51,7 @@
 
             async swap() {
                 this.state = 'swapping';
+                this.$socket.emit('recorder', 'swapping');
                 const endpoint = `/process/${this.videoId}`;
                 const req = await window.fetch(endpoint);
                 this.state = 'ready';

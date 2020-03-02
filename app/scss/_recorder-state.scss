@@ -1,0 +1,49 @@
+@keyframes record {
+    from {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.recorder-state {
+    border: 1rem solid $c-1;
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 0;
+    padding: 2rem;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    margin-top: 3rem;
+    transition: 1s;
+    position: absolute;
+    bottom: -25vh;
+    left: 0;
+    right: 0;
+    max-width: 80rem;
+    width: 100%;
+    @include margin-center;
+
+    &[visible] {
+        bottom: 0;
+    }
+
+    &__message {
+        text-align: center;
+        @include flex-center(row);
+    }
+
+    &__recording {
+        @include wh(4rem);
+        border-radius: 4rem;
+        background: $c-4;
+        animation: record 1s infinite linear alternate;
+        margin-right: 1rem;
+    }
+
+    &__message p {
+        font-size: 2.4rem;
+        color: black;
+    }
+}

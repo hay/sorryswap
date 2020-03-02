@@ -21,8 +21,13 @@
         methods : {
             start() {
                 this.$sounds.play('transform');
+                this.$socket.emit('recorder', 'start');
                 this.$store.commit('step', 'explain');
             }
+        },
+
+        mounted( ){
+            this.$socket.emit('recorder', 'splash');
         }
     }
 </script>

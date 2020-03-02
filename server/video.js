@@ -6,6 +6,7 @@ class Video {
     constructor(id) {
         const conf = CONF.server;
         this.conf = conf;
+        this.id = id;
         this.uploadFilePath = `${conf.upload_path}/${id}.${conf.upload_video_extension}`;
         this.uploadDataPath = `${conf.upload_path}/${id}.json`;
         this.outputFilePath = `${conf.output_path}/${id}.${conf.output_video_extension}`;
@@ -17,7 +18,10 @@ class Video {
     async getData() {
         const outputExists = await this.outputExists();
         const uploadExists = await this.uploadExists();
-        const data = { outputExists, uploadExists };
+        const data = {
+            id : this.id,
+            outputExists, uploadExists
+        };
 
         if (outputExists) {
             data.outputData = await loadJson(this.outputDataPath);

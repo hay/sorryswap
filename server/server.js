@@ -91,7 +91,7 @@ module.exports = class Server {
         data.swapDate = (new Date()).toISOString();
         writeJson(video.outputDataPath, data);
 
-        console.log(`${id} has been swapped`);
+        this.log(`${id} has been swapped`);
     }
 
     run() {
@@ -102,7 +102,12 @@ module.exports = class Server {
                 this.log('connected!');
 
                 socket.on('clientlog', (msg) => {
-                    this.log('clientlog', msg);
+                    this.log('clientlog:' + msg);
+                });
+
+                socket.on('recorder', (msg) => {
+                    this.log('recorder:' + msg);
+                    this.io.emit('recorder', msg);
                 });
             });
         });
@@ -115,7 +120,7 @@ module.exports = class Server {
             try {
                 info = await this.getVideo(req.params.id);
             } catch (e) {
-                console.log(e);
+                console.error(e);
                 res.status(e.status).send(e.message);
             }
 
@@ -148,9 +153,11 @@ module.exports = class Server {
             try {
                 await this.processUpload(req.params.id);
             } catch (e) {
-                console.log(e);
+                console.error(e);
                 res.send('FAIL');
             }
+
+            this.io.emit('recorder', 'newvideo');
 
             res.send(req.params.id);
         });

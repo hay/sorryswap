@@ -1,0 +1,9 @@
+@mixin fixed-screen {
+    font-family: $font-interface;
+    background: $gradient-1;
+    color: white;
+
+    @include wh(100%, 100vh);
+    overflow: hidden;
+    @include flex-center;
+}
