@@ -30,7 +30,8 @@ export class Store {
                     return target;
                 }),
                 targetVideo : null,
-                videoId : null
+                videoId : null,
+                videos : []
             };
         }
 
@@ -90,6 +91,21 @@ export class Store {
 
                 videoId(state, id) {
                     state.videoId = id;
+                }
+            },
+
+            actions : {
+                async fetchVideos({ state }) {
+                    const url = state.conf.app.output_endpoint;
+                    const req = await window.fetch(url);
+                    let videos = await req.json();
+
+                    // Sort: recent videos first
+                    videos = videos.sort((a, b) => {
+                        return a.outputData.recordTime > b.outputData.recordTime ? -1 : 1;
+                    });
+
+                    state.videos = videos;
                 }
             }
         });

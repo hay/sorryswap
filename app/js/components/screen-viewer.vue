@@ -8,7 +8,7 @@
             v-bind:src="src"
             autoplay></video>
 
-        <recorder-state></recorder-state>
+        <recorder-state class="recorder-state--viewer"></recorder-state>
     </div>
 </template>
 
@@ -33,28 +33,20 @@
 
             video() {
                 return this.videos[this.videoIndex];
+            },
+
+            videos() {
+                return this.$store.state.videos;
             }
         },
 
         data() {
             return {
-                videoIndex : 0,
-                videos : []
+                videoIndex : 0
             };
         },
 
         methods : {
-            async getVideos() {
-                const url = this.$store.state.conf.app.output_endpoint;
-                const req = await window.fetch(url);
-                const videos = await req.json();
-
-                // Sort: recent videos first
-                this.videos = videos.sort((a, b) => {
-                    return a.outputData.recordTime > b.outputData.recordTime ? -1 : 1;
-                });
-            },
-
             nextVideo() {
                 this.videoIndex = (this.videoIndex + 1) % this.videos.length;
             },
@@ -71,16 +63,13 @@
         },
 
         mounted() {
-            this.getVideos();
             this.setupVideo();
         },
 
-        sockets : {
-            recorder(type) {
-                if (type === 'newvideo') {
-                    this.getVideos();
-                    this.videoIndex = 0;
-                }
+        watch : {
+            videos() {
+                // If we've got new videos, reset video index
+                this.videoIndex = 0;
             }
         }
     };

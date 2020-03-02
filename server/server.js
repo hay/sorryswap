@@ -81,7 +81,7 @@ module.exports = class Server {
 
         this.log(`Swapping ${input} on ${target} as ${output}`);
 
-        const cmd = `facetool swap -i ${input} -t ${target} -o ${output} --only-mouth`;
+        const cmd = `facetool swap -i ${input} -t ${target} -o ${output} -if --only-mouth`;
         const { stdout, stderr } = await exec(cmd);
         console.log(stdout, stderr);
 

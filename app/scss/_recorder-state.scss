@@ -9,21 +9,29 @@
 }
 
 .recorder-state {
-    border: 1rem solid $c-1;
-    background: rgba(255, 255, 255, 0.9);
-    border-bottom: 0;
-    padding: 2rem;
-    border-top-left-radius: 2rem;
-    border-top-right-radius: 2rem;
-    margin-top: 3rem;
-    transition: 1s;
-    position: absolute;
-    bottom: -25vh;
-    left: 0;
-    right: 0;
-    max-width: 80rem;
-    width: 100%;
-    @include margin-center;
+    &--status {
+        border: 1px solid black;
+        padding: 1rem;
+        margin: 1rem;
+    }
+
+    &--viewer {
+        border: 1rem solid $c-1;
+        background: rgba(255, 255, 255, 0.9);
+        border-bottom: 0;
+        padding: 2rem;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        margin-top: 3rem;
+        transition: 1s;
+        position: absolute;
+        bottom: -25vh;
+        left: 0;
+        right: 0;
+        max-width: 80rem;
+        width: 100%;
+        @include margin-center;
+    }
 
     &[visible] {
         bottom: 0;

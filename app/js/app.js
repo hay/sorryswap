@@ -72,9 +72,18 @@ Vue.use(vueSocket);
             parseHash.call(this);
             this.setupLogger();
             this.setupSound();
+            this.$store.dispatch('fetchVideos');
         },
 
         render: h => h( App ),
+
+        sockets : {
+            recorder(type) {
+                if (type === 'newvideo') {
+                    this.$store.dispatch('fetchVideos');
+                }
+            }
+        },
 
         store : store.getStore()
     });
