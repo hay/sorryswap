@@ -8,6 +8,7 @@
             <img class="recorder__logo recorder__logo--splash" src="../../static/img/logo.svg" />
 
             <el-button
+                focused
                 v-on:click="start"
                 text="Druk op de knop om te starten!"
                 type="big"></el-button>

@@ -12,6 +12,7 @@
             </section>
 
             <el-button
+                focused
                 v-on:click="start"
                 type="big"
                 text="Kies een beroemdheid"></el-button>
