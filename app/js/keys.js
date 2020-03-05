@@ -52,4 +52,27 @@ export class Keys {
     removeListeners() {
         this.bus.$off();
     }
+
+    setupGrid(size) {
+        let focus = 0;
+
+        function setFocus(delta) {
+            let nextFocus = focus + delta;
+
+            if (nextFocus < 0) {
+                nextFocus = size - 1;
+            } else if (nextFocus > size - 1) {
+                nextFocus = 0;
+            }
+
+            focus = nextFocus;
+
+            this.bus.$emit('focus', focus);
+        }
+
+        this.on('left', () => setFocus.call(this, -1));
+        this.on('right', () => setFocus.call(this, 1));
+        this.on('up', () => setFocus.call(this, -1));
+        this.on('down', () => setFocus.call(this, 1));
+    }
 }

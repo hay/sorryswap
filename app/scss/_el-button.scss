@@ -12,6 +12,7 @@
 
 .el-button {
     color: white;
+    border: 1rem solid transparent;
 
     &--big {
         font-size: 5rem;
@@ -23,9 +24,9 @@
     }
 
     &--normal {
-        font-size: 3rem;
+        background: $c-4;
+        font-size: 4rem;
         text-align: center;
-        background: $c-5;
         padding: 1rem;
     }
 

@@ -5,15 +5,13 @@
                 Kies een script
             </h2>
 
-            <ul class="mediagrid">
-                <li v-for="script in scripts">
-                    <button
-                        class="mediagrid__textbutton"
-                        v-on:click="selectScript(script.name)">
-                        {{script.name}}
-                    </button>
-                </li>
-            </ul>
+            <menu class="recorder__list">
+                <el-button
+                    v-for="(script, index) in scripts"
+                    v-bind:focused="focused === index"
+                    v-on:click="selectScript(script.name)"
+                    v-bind:text="script.name"></el-button>
+            </menu>
         </div>
     </div>
 </template>
@@ -26,12 +24,24 @@
             }
         },
 
+        data() {
+            return {
+                focused : 0
+            }
+        },
+
         methods : {
             selectScript(id) {
                 this.$sounds.play('bla');
                 this.$store.commit('targetScript', id);
                 this.$store.commit('step', 'chooseconfirm');
             }
+        },
+
+        mounted() {
+            this.$keys.setupGrid(this.scripts.length);
+            this.$keys.on('focus', (index) => this.focused = index);
+            this.$keys.on('enter', () => this.selectScript(this.scripts[this.focused].name))
         }
     }
 </script>

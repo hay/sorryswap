@@ -52,26 +52,12 @@
                 this.$store.commit('targetVideo', id);
                 this.$sounds.play('woopwoop');
                 this.$store.commit('step', 'choosescript');
-            },
-
-            setFocus(delta) {
-                let focus = this.focused + delta;
-
-                if (focus < 0) {
-                    focus = this.videos.length - 1;
-                } else if (focus > this.videos.length - 1) {
-                    focus = 0;
-                }
-
-                this.focused = focus;
             }
         },
 
         mounted() {
-            this.$keys.on('left', () => this.setFocus(-1));
-            this.$keys.on('right', () => this.setFocus(1));
-            this.$keys.on('up', () => this.setFocus(-1));
-            this.$keys.on('down', () => this.setFocus(1));
+            this.$keys.setupGrid(this.videos.length);
+            this.$keys.on('focus', (index) => this.focused = index);
             this.$keys.on('enter', () => this.selectVideo(this.focused));
         },
 
