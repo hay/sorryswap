@@ -1,0 +1,37 @@
+@keyframes btn--big {
+    from {
+        transform: rotate(0deg) scale(1);
+        background: $c-4;
+    }
+
+    to {
+        transform: rotate(-2deg) scale(1.2);
+        background: $c-3;
+    }
+}
+
+.el-button {
+    color: white;
+
+    &--big {
+        font-size: 5rem;
+        text-align: center;
+        background: $c-4;
+        border-radius: 1rem;
+        padding: 1rem 2rem;
+        animation: btn--big 2s infinite alternate
+    }
+
+    &--normal {
+        font-size: 3rem;
+        text-align: center;
+        background: $c-5;
+        padding: 1rem;
+    }
+
+    // The focus class should be .focus, but for some reason that doesn't
+    // get applied
+    &[focused] {
+        border: 1rem solid $c-5;
+    }
+}

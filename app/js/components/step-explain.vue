@@ -11,11 +11,10 @@
                 <p>Spreek jouw eigen ‘welgemeende’ sorry bij in en hark vergeving op vergeving binnen voor al je zonden!</p>
             </section>
 
-            <button
-                class="recorder__btn recorder__btn--big"
-                v-on:click="start">
-                Kies een beroemdheid!
-            </button>
+            <el-button
+                v-on:click="start"
+                type="big"
+                text="Kies een beroemdheid"></el-button>
         </div>
     </div>
 </template>

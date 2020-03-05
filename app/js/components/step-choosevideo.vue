@@ -6,14 +6,16 @@
             </h2>
 
             <ul class="mediagrid">
-                <li v-for="video in videos">
-                    <button v-on:click="selectVideo(video.id)">
+                <li v-for="(video, index) in videos">
+                    <el-button
+                        type="video"
+                        v-on:click="selectVideo(video.id)">
                         <video class="mediagrid__video"
                                v-bind:data-id="video.id"
                                v-on:mouseenter="playVideo(video.id)"
                                muted playsinline
                                v-bind:src="video.src"></video>
-                    </button>
+                    </el-button>
                 </li>
             </ul>
         </div>

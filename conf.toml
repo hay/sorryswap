@@ -16,6 +16,11 @@ upload_path = "files/uploads"
 [app]
 default_screen = 'index'
 default_step = "splash"
+keycodes.up = 38
+keycodes.down = 40
+keycodes.left = 37
+keycodes.right = 39
+keycodes.enter = 13
 output_endpoint = "/output"
 process_endpoint = "/process"
 recording_time = 30

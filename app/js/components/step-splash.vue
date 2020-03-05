@@ -7,11 +7,10 @@
         <div class="recorder__content">
             <img class="recorder__logo recorder__logo--splash" src="../../static/img/logo.svg" />
 
-            <button
-                class="recorder__btn recorder__btn--big"
-                v-on:click="start">
-                Druk op A om te starten!
-            </button>
+            <el-button
+                v-on:click="start"
+                text="Druk op de knop om te starten!"
+                type="big"></el-button>
         </div>
     </div>
 </template>

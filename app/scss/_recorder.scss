@@ -12,18 +12,6 @@
     }
 }
 
-@keyframes btn--big {
-    from {
-        transform: rotate(0deg) scale(1);
-        background: $c-4;
-    }
-
-    to {
-        transform: rotate(-2deg) scale(1.2);
-        background: $c-3;
-    }
-}
-
 @keyframes headline {
     0% {
         background: $c-1;
@@ -150,25 +138,5 @@
 
     &__text p {
         font-family: $font-text;
-    }
-
-    &__btn {
-        color: white;
-    }
-
-    &__btn--big {
-        font-size: 5rem;
-        text-align: center;
-        background: $c-4;
-        border-radius: 1rem;
-        padding: 1rem 2rem;
-        animation: btn--big 2s infinite alternate
-    }
-
-    &__btn--normal {
-        font-size: 3rem;
-        text-align: center;
-        background: $c-5;
-        padding: 1rem;
     }
 }

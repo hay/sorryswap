@@ -1,8 +1,10 @@
 import CONF from '../../conf.toml';
 import 'regenerator-runtime/runtime';
 import Vue from 'vue';
-import App from './components/app.vue';
 import VueSocketIO from 'vue-socket.io'
+
+import App from './components/app.vue';
+import ElButton from './components/el-button.vue';
 import { parseHash } from './router.js';
 import { SoundManager } from './sound-manager.js';
 import { Store } from './store.js';
@@ -13,6 +15,7 @@ const vueSocket = new VueSocketIO({
 })
 
 Vue.use(vueSocket);
+Vue.component('el-button', ElButton);
 
 (async function() {
     const store = new Store({
