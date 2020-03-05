@@ -35,20 +35,6 @@
             }
         },
 
-        mounted() {
-            const keycodes = this.$store.state.conf.app.keycodes;
-
-            listener = window.addEventListener('keydown', (e) => {
-                if (Object.values(keycodes).includes(e.which)) {
-                    const key = Object.keys(keycodes).find(code => keycodes[code] === e.which);
-
-                    if (key === 'enter' && this.focused) {
-                        this.$emit('click');
-                    }
-                }
-            });
-        },
-
         props : {
             focused : {
                 type : Boolean,

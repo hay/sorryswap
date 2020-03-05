@@ -26,8 +26,10 @@
             }
         },
 
-        mounted( ){
+        mounted() {
             this.$socket.emit('recorder', 'splash');
+
+            this.$keys.on('enter', this.start.bind(this));
         }
     }
 </script>

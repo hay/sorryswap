@@ -44,7 +44,11 @@
             this.$sounds.pause();
         },
 
-        mounted() {
+        watch : {
+            step() {
+                // Remove all key events on every step
+                this.$keys.removeListeners();
+            }
         }
     };
 </script>

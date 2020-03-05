@@ -8,6 +8,8 @@
             <ul class="mediagrid">
                 <li v-for="(video, index) in videos">
                     <el-button
+                        v-bind:focused="focused === index"
+                        v-on:keyright="setFocus(focused + 1)"
                         type="video"
                         v-on:click="selectVideo(video.id)">
                         <video class="mediagrid__video"
@@ -30,6 +32,12 @@
             }
         },
 
+        data() {
+            return {
+                focused : 0
+            };
+        },
+
         methods : {
             playVideo(id) {
                 Array.from(this.$el.querySelectorAll('video')).forEach((video) => {
@@ -45,6 +53,11 @@
                 this.$store.commit('targetVideo', id);
                 this.$sounds.play('woopwoop');
                 this.$store.commit('step', 'choosescript');
+            },
+
+            setFocus(index) {
+                console.log(index);
+                this.focused = index;
             }
         }
     }

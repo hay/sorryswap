@@ -5,6 +5,7 @@ import VueSocketIO from 'vue-socket.io'
 
 import App from './components/app.vue';
 import ElButton from './components/el-button.vue';
+import { Keys } from './keys.js';
 import { parseHash } from './router.js';
 import { SoundManager } from './sound-manager.js';
 import { Store } from './store.js';
@@ -36,6 +37,12 @@ Vue.component('el-button', ElButton);
                 } else {
                     this.$store.commit('screen', CONF.app.default_screen);
                 }
+            },
+
+            setupKeys() {
+                Vue.prototype.$keys = new Keys({
+                    keycodes : this.$store.state.conf.app.keycodes
+                });
             },
 
             setupLogger() {
@@ -74,6 +81,7 @@ Vue.component('el-button', ElButton);
             window.addEventListener('hashchange', parseHash.bind(this));
             parseHash.call(this);
             this.setupLogger();
+            this.setupKeys();
             this.setupSound();
             this.$store.dispatch('fetchVideos');
         },
