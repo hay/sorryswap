@@ -25,19 +25,19 @@ export class Keys {
         }
 
         if (key === 'left') {
-            this.bus.$emit('keyleft');
+            this.bus.$emit('left');
         }
 
         if (key === 'right') {
-            this.bus.$emit('keyright');
+            this.bus.$emit('right');
         }
 
         if (key === 'up') {
-            this.bus.$emit('keyup');
+            this.bus.$emit('up');
         }
 
         if (key === 'down') {
-            this.bus.$emit('keydown');
+            this.bus.$emit('down');
         }
     }
 

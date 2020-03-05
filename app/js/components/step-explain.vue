@@ -27,6 +27,10 @@
                 this.$sounds.play('beep');
                 this.$store.commit('step', 'choosevideo');
             }
+        },
+
+        mounted() {
+            this.$keys.on('enter', this.start.bind(this));
         }
     }
 </script>
