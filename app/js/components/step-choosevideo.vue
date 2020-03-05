@@ -56,9 +56,13 @@
         },
 
         mounted() {
-            this.$keys.setupGrid(this.videos.length);
+           this.$keys.setupList({
+                initialFocus : this.focused,
+                size : this.videos.length
+            });
+
             this.$keys.on('focus', (index) => this.focused = index);
-            this.$keys.on('enter', () => this.selectVideo(this.focused));
+            this.$keys.on('enter', () => this.selectVideo(this.videos[this.focused].id));
         },
 
         watch : {

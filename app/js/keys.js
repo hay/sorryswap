@@ -53,15 +53,15 @@ export class Keys {
         this.bus.$off();
     }
 
-    setupGrid(size) {
-        let focus = 0;
+    setupList(opts) {
+        let focus = opts.initialFocus;
 
         function setFocus(delta) {
             let nextFocus = focus + delta;
 
             if (nextFocus < 0) {
-                nextFocus = size - 1;
-            } else if (nextFocus > size - 1) {
+                nextFocus = opts.size - 1;
+            } else if (nextFocus > opts.size - 1) {
                 nextFocus = 0;
             }
 

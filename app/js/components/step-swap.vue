@@ -15,11 +15,10 @@
             </section>
 
             <menu class="recorder__actions">
-                <button
-                    class="recorder__btn recorder__btn--normal"
-                    v-on:click="again">
-                    Nog een keer?
-                </button>
+                <el-button
+                    focused
+                    v-on:click="again"
+                    text="Nog een keer?"></el-button>
             </menu>
         </div>
     </div>
@@ -60,6 +59,7 @@
 
         async mounted() {
             this.swap();
+            this.$keys.on('enter', this.again.bind(this));
         }
     }
 </script>

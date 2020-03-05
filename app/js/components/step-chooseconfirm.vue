@@ -20,17 +20,15 @@
             </div>
 
             <menu class="recorder__actions">
-                <button
-                    class="recorder__btn recorder__btn--normal"
-                    v-on:click="back">
-                    Pas aan
-                </button>
+                <el-button
+                    v-bind:focused="focused === 0"
+                    v-on:click="back"
+                    text="Pas aan"></el-button>
 
-                <button
-                    class="recorder__btn recorder__btn--normal"
-                    v-on:click="ok">
-                    Neem op
-                </button>
+                <el-button
+                    v-bind:focused="focused === 1"
+                    v-on:click="ok"
+                    text="Neem op"></el-button>
             </menu>
         </div>
     </div>
@@ -48,6 +46,12 @@
             }
         },
 
+        data() {
+            return {
+                focused : 1
+            };
+        },
+
         methods : {
             back() {
                 this.$store.commit('step', 'choosevideo');
@@ -58,6 +62,23 @@
                 this.$store.commit('step', 'record');
                 this.$sounds.play('woopwoop');
             }
+        },
+
+        mounted() {
+           this.$keys.setupList({
+                initialFocus : this.focused,
+                size : 2
+            });
+
+            this.$keys.on('focus', (index) => this.focused = index);
+
+            this.$keys.on('enter', () => {
+                if (this.focused === 0) {
+                    this.back();
+                } else if (this.focused === 1) {
+                    this.ok();
+                }
+            });
         }
     }
 </script>
