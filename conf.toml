@@ -1,5 +1,6 @@
 [global]
 debug = true
+output_video_time = 30
 
 [server]
 allowed_upload_mimetypes = ['video/webm']

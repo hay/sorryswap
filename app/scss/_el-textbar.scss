@@ -1,0 +1,45 @@
+.el-textbar {
+    @include flex-center(row);
+    @include wh(100%, $textbar-size);
+    background: white;
+    color: black;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+        content: '';
+        @include wh($textbar-size);
+        background: url('../static/img/icon-arrow-left.svg') no-repeat;
+        background-size: contain;
+        display: block;
+    }
+
+    &:after {
+        transform: rotate(180deg);
+    }
+
+    &__textwrapper {
+        width: calc(100% - #{$textbar-size * 2});
+        height: $textbar-size;
+        position: relative;
+    }
+
+    &__textwrapper:after {
+        content: '';
+        position: absolute;
+        @include pos(0);
+        background: linear-gradient(
+            white 0%,
+            transparent 25%,
+            transparent 75%,
+            white 100%
+        );
+    }
+
+    &__text {
+        text-align: center;
+        font-size: 5rem;
+        line-height: 1.5;
+        transition-timing-function: linear;
+    }
+}
