@@ -10,6 +10,7 @@
                     <el-button
                         v-bind:focused="focused === index"
                         type="video"
+                        v-bind:text="video.name"
                         v-on:click="selectVideo(video.id)">
                         <video class="mediagrid__video"
                                v-bind:data-id="video.id"

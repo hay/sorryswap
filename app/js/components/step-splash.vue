@@ -13,11 +13,21 @@
                 text="Druk op de knop om te starten!"
                 type="big"></el-button>
         </div>
+
+        <el-animation></el-animation>
+        <el-animation></el-animation>
+        <el-animation></el-animation>
     </div>
 </template>
 
 <script>
+    import ElAnimation from './el-animation.vue';
+
     export default {
+        components : {
+            ElAnimation
+        },
+
         methods : {
             start() {
                 this.$sounds.play('transform');

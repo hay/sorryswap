@@ -5,7 +5,7 @@
                 Bevestig je keuze
             </h2>
 
-            <div class="recorder__panels">
+            <div class="recorder__list">
                 <section class="recorder__panel">
                     <video v-bind:src="video.src"
                           autoplay loop playsinline muted></video>
@@ -13,8 +13,8 @@
                 </section>
 
                 <div class="recorder__panel">
-                    <section class="recorder__text recorder__text--small">
-                        <p v-html="script.text"></p>
+                    <section class="recorder__text">
+                        Jouw gekozen script: <strong>{{script.name}}</strong>
                     </section>
                 </div>
             </div>

@@ -1,0 +1,45 @@
+@keyframes from-top {
+    from {
+        top: -50vh;
+    }
+
+    to {
+        top: 0vh;
+    }
+}
+
+@keyframes from-bottom {
+    from {
+        bottom: -50vh;
+    }
+
+    to {
+        bottom: 0vh;
+    }
+}
+
+.el-animation {
+    position: absolute;
+    @include pos(0);
+    pointer-events: none;
+
+    &__image {
+        position: absolute;
+        transition: 3s;
+    }
+
+    &__image[align="top"] {
+        transform: rotate(180deg);
+        animation: from-top 5s infinite alternate;
+    }
+
+    &__image[align="bottom"] {
+        animation: from-bottom 5s infinite alternate;
+    }
+
+    &__video {
+        width: 50rem;
+        border: 2rem solid $c-1;
+        border-radius: 2rem;
+    }
+}

@@ -3,9 +3,9 @@
         v-bind:class="classes"
         v-bind:focused="focused"
         v-on:click="click">
+        <slot></slot>
         <span v-if="text"
               class="el-button__text">{{text}}</span>
-        <slot></slot>
     </button>
 </template>
 

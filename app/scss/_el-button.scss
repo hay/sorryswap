@@ -30,6 +30,20 @@
         padding: 1rem;
     }
 
+    &--video {
+        background: black;
+        position: relative;
+    }
+
+    &--video &__text {
+        position: absolute;
+        background: black;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 1rem;
+    }
+
     // The focus class should be .focus, but for some reason that doesn't
     // get applied
     &[focused] {
