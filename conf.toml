@@ -24,6 +24,7 @@ upload_path = "files/uploads"
 [app]
 default_screen = 'index'
 default_step = "splash"
+info_endpoint = "/info"
 keycodes.up = 38
 keycodes.down = 40
 keycodes.left = 37
@@ -38,7 +39,7 @@ shortcode_endpoint = "/shortcode"
 sounds = ["beep", "bla", "click", "jump", "music", "robot", "transform", "woopwoop", "wrong"]
 steps = [
     "splash", "explain", "choosevideo", "choosescript", "chooseconfirm", "record", "replay",
-    "swap", "done"
+    "swap", "share"
 ]
 upload_endpoint = "/upload"
 

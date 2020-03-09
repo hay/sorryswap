@@ -6,6 +6,7 @@
         <step-explain v-if="step === 'explain'"></step-explain>
         <step-record v-if="step === 'record'"></step-record>
         <step-replay v-if="step === 'replay'"></step-replay>
+        <step-share v-if="step === 'share'"></step-share>
         <step-splash v-if="step === 'splash'"></step-splash>
         <step-swap v-if="step === 'swap'"></step-swap>
     </div>
@@ -18,6 +19,7 @@
     import StepExplain from './step-explain.vue';
     import StepRecord from './step-record.vue';
     import StepReplay from './step-replay.vue';
+    import StepShare from './step-share.vue';
     import StepSplash from './step-splash.vue';
     import StepSwap from './step-swap.vue';
 
@@ -29,6 +31,7 @@
             StepExplain,
             StepRecord,
             StepReplay,
+            StepShare,
             StepSplash,
             StepSwap
         },

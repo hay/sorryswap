@@ -24,7 +24,7 @@
             <menu class="recorder__actions recorder__actions--column">
                 <el-button
                     v-bind:focused="focused === 1"
-                    v-on:click="again"
+                    v-on:click="share"
                     text="Ok, ga voor de goedkope optie"></el-button>
 
                 <el-button
@@ -68,10 +68,6 @@
         },
 
         methods : {
-            again() {
-                this.$store.commit('step', 'splash');
-            },
-
             async countdown() {
                 this.time.seconds = this.time.seconds - 1;
 
@@ -105,6 +101,10 @@
                 });
             },
 
+            share() {
+                this.$store.commit('step', 'share');
+            },
+
             async swap() {
                 this.state = 'swapping';
                 this.$socket.emit('recorder', 'swapping');
@@ -112,7 +112,10 @@
                 // If we want: disableSwap=1 can be added to disable swapping
                 if (this.$store.state.swapVideo) {
                     const endpoint = `/process/${this.videoId}`;
-                    const req = await window.fetch(endpoint);
+                    window.fetch(endpoint);
+
+                    // Also get the meta
+                    this.$store.dispatch('fetchVideoMeta');
                 }
             }
         },

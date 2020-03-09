@@ -2,6 +2,8 @@ import { find } from 'lodash';
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import { getJson } from './util.js';
+
 Vue.use(Vuex);
 
 // Global logger to communicate with the server
@@ -32,6 +34,7 @@ export class Store {
                 }),
                 targetVideo : null,
                 videoId : null,
+                videoMeta : null,
                 videos : []
             };
         }
@@ -100,8 +103,7 @@ export class Store {
             actions : {
                 async fetchVideos({ state }) {
                     const url = state.conf.app.output_endpoint;
-                    const req = await window.fetch(url);
-                    let videos = await req.json();
+                    let videos = await getJson(url);
 
                     // Sort: recent videos first
                     videos = videos.sort((a, b) => {
@@ -109,6 +111,13 @@ export class Store {
                     });
 
                     state.videos = videos;
+                },
+
+                async fetchVideoMeta({ state }) {
+                    const endpoint = state.conf.app.info_endpoint;
+                    const url = `${endpoint}/${state.videoId}`;
+                    const meta = getJson(url);
+                    state.videoMeta = meta;
                 }
             }
         });
