@@ -1,0 +1,17 @@
+.el-qrcode {
+    @include flex-center;
+
+    &__canvas {
+        width: 30rem !important;
+        height: 30rem !important;
+        image-rendering: pixelated;
+    }
+
+    &__text {
+        width: 30rem;
+        background: white;
+        font-size: 1.2rem;
+        font-family: monospace;
+        padding: 0 1rem 1rem 1rem;
+    }
+}

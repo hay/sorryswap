@@ -22,7 +22,7 @@ upload_video_extension = "webm"
 upload_path = "files/uploads"
 
 [app]
-default_screen = 'index'
+default_screen = 'share'
 default_step = "splash"
 info_endpoint = "/info"
 keycodes.up = 38
@@ -35,6 +35,7 @@ process_endpoint = "/process"
 recording_time = 30
 screens = ['index', 'recorder', 'share', 'status', 'viewer']
 server = "http://localhost:3000"
+share_link = "http://192.168.178.153:3000/?code="
 shortcode_endpoint = "/shortcode"
 sounds = ["beep", "bla", "click", "jump", "music", "robot", "transform", "woopwoop", "wrong"]
 steps = [

@@ -62,7 +62,7 @@
     import { getJson } from '../util.js';
 
     const SHORTCODE_REGEX = /[a-z0-9]{4}/
-    const URL_PARAM_REGEX = /\?url=([a-z0-9]{4})/
+    const URL_PARAM_REGEX = /\?code=([a-z0-9]{4})/
 
     export default {
         computed : {

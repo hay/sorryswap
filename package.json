@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "glob-promise": "^3.4.0",
     "multer": "^1.4.2",
+    "qrcode": "^1.4.4",
     "recordrtc": "^5.5.8",
     "regenerator-runtime": "^0.13.3",
     "socket.io": "^2.3.0",

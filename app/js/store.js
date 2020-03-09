@@ -97,11 +97,19 @@ export class Store {
 
                 videoId(state, id) {
                     state.videoId = id;
+                },
+
+                videoMeta(state, meta) {
+                    state.videoMeta = meta;
+                },
+
+                videos(state, videos) {
+                    state.videos = videos;
                 }
             },
 
             actions : {
-                async fetchVideos({ state }) {
+                async fetchVideos({ state, commit }) {
                     const url = state.conf.app.output_endpoint;
                     let videos = await getJson(url);
 
@@ -110,14 +118,15 @@ export class Store {
                         return a.outputData.recordTime > b.outputData.recordTime ? -1 : 1;
                     });
 
-                    state.videos = videos;
+                    commit('videos', videos);
                 },
 
-                async fetchVideoMeta({ state }) {
+                async fetchVideoMeta({ state, commit }) {
                     const endpoint = state.conf.app.info_endpoint;
                     const url = `${endpoint}/${state.videoId}`;
-                    const meta = getJson(url);
-                    state.videoMeta = meta;
+                    const meta = await getJson(url);
+
+                    commit('videoMeta', meta);
                 }
             }
         });

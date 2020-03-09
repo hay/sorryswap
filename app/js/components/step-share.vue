@@ -13,6 +13,12 @@
                 <p>Met de QR-code hieronder krijg je een linkje wat vanaf dan
                 de video laat zien. Je kan ook de shortcode hieronder noteren
                 om later de video op te halen.</p>
+
+                <el-qrcode
+                    v-if="shortcode"
+                    v-bind:text="url"></el-qrcode>
+
+                <pre class="recorder__code">{{shortcode}}</pre>
             </div>
 
             <menu class="recorder__actions">
@@ -26,10 +32,23 @@
 </template>
 
 <script>
+    import ElQrcode from './el-qrcode.vue';
+
     export default {
-        data() {
-            return {
-            };
+        components : { ElQrcode },
+
+        computed : {
+            shortcode() {
+                const meta = this.$store.state.videoMeta;
+                if (!meta || !meta.outputData) return null;
+
+                return meta.outputData.shortcode;
+            },
+
+            url() {
+                const endpoint = this.$store.state.conf.app.share_link;
+                return `${endpoint}${this.shortcode}`
+            }
         },
 
         methods : {

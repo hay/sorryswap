@@ -148,6 +148,14 @@
         font-family: $font-text;
     }
 
+    &__code {
+        font-size: 4rem;
+        background: black;
+        color: white;
+        padding: 1rem;
+        display: inline-block;
+    }
+
     &__list {
         @include flex-center;
     }
