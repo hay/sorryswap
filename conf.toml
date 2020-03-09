@@ -38,6 +38,26 @@ upload_endpoint = "/upload"
 width = 1280
 height = 720
 
+[[app.swaptext]]
+text = "Hmmm. dat duurt lang! Maar voor een klein bedrag kan het sneller."
+btn = "Koop een Amazon-server voor $1 per uur"
+
+[[app.swaptext]]
+text = "Duurt nog steeds lang. En ik moet nu wel al je filmpjes uploaden naar Amazon."
+btn = "Ok, prima"
+
+[[app.swaptext]]
+text = "En eigenlijk moet ik een acteur zoeken die lijkt op jouw sorry-standin."
+btn = "Ja, is prima. Ik betaal wel"
+
+[[app.swaptext]]
+text = "Ik heb eigenlijk nog meer video van je nodig. Bij voorkeur een uur."
+btn = "Ok, ik heb toch niks beters te doen"
+
+[[app.swaptext]]
+text = "En heb je nagedacht over de rechten? Hoe zit het met het copyright?"
+btn = "Ik ken nog wel een goede advocaat"
+
 [errors]
 invalid_mimetype = ["415", "Invalid mimetype"]
 video_not_found = ["404", "Video with ID not found"]

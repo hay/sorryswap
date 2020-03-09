@@ -22,6 +22,7 @@ export class Store {
                 recordingTime : opts.conf.app.recording_time,
                 screen : opts.conf.app.default_screen,
                 step : opts.conf.app.default_step,
+                swapVideo : true,
                 targetScript : null,
                 targetScripts : opts.conf.script,
                 targetVideos : opts.conf.target.map((target) => {
@@ -71,6 +72,8 @@ export class Store {
             },
 
             mutations : {
+                disableSwap: (state) => state.swapVideo = false,
+
                 recordingTime: (state, time) => state.recordingTime = parseInt(time),
 
                 screen: (state, screen) => state.screen = screen,

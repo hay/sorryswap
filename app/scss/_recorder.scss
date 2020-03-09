@@ -92,8 +92,16 @@
         display: flex;
     }
 
+    &__actions--column {
+        flex-direction: column;
+    }
+
     &__actions > * {
         margin: 0 1rem;
+    }
+
+    &__actions--column > * {
+        margin: 1rem 0;
     }
 
     &__logo {

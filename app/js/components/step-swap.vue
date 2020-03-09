@@ -2,34 +2,47 @@
     <div class="recorder__step">
         <div class="recorder__content">
             <h2 class="recorder__headline">
-                Swappen...
+                Deepfake maken...
             </h2>
 
-            <section v-if="state === 'swapping'" class="recorder__text">
-                <p>Nu aan het swappen, dit kan even duren!</p>
+            <section v-if="state === 'swapping'"
+                     class="swapping">
+                <img class="swapping__image"
+                     src="/static/img/facescan.gif" alt="" />
+
+                <div class="swapping__text">
+                    <h3 class="swapping__time">
+                        Nog 46 uur, {{time.minutes}} minuten, {{time.seconds}} seconden
+                    </h3>
+
+                    <p class="swapping__time">
+                        {{swaptext.text}}
+                    </p>
+                </div>
             </section>
 
-            <section v-if="state === 'ready'">
-                <video v-bind:src="src"
-                       autoplay loop playsinline></video>
-            </section>
-
-            <menu class="recorder__actions">
+            <menu class="recorder__actions recorder__actions--column">
                 <el-button
-                    focused
+                    v-bind:focused="focused === 1"
                     v-on:click="again"
-                    text="Nog een keer?"></el-button>
+                    text="Ok, ga voor de goedkope optie"></el-button>
+
+                <el-button
+                    v-bind:focused="focused === 0"
+                    v-on:click="nextSwapText"
+                    v-bind:text="swaptext.btn"></el-button>
             </menu>
         </div>
     </div>
 </template>
 
 <script>
+    import { timeout } from '../util.js';
+
     export default {
         computed : {
-            src() {
-                // TODO: add an API method for getting back the URL
-                return `files/output/${this.videoId}.mp4`;
+            swaptext() {
+                return this.allSwapTexts[this.textIndex];
             },
 
             videoId() {
@@ -39,7 +52,18 @@
 
         data() {
             return {
-                'state' : 'mounted'
+                allSwapTexts : this.$store.state.conf.app.swaptext,
+
+                focused : 0,
+
+                state : 'mounted',
+
+                textIndex : 0,
+
+                time : {
+                    minutes : 49,
+                    seconds : 7
+                }
             };
         },
 
@@ -48,18 +72,55 @@
                 this.$store.commit('step', 'splash');
             },
 
+            async countdown() {
+                this.time.seconds = this.time.seconds - 1;
+
+                if (this.time.seconds === 0) {
+                    this.time.minutes = this.time.minutes - 1;
+                    this.time.seconds = 59;
+                }
+
+                await timeout(1000);
+                this.countdown();
+            },
+
+            nextSwapText() {
+                this.textIndex = (this.textIndex + 1) % this.allSwapTexts.length;
+            },
+
+            setupKeys() {
+               this.$keys.setupList({
+                    initialFocus : this.focused,
+                    size : 2
+                });
+
+                this.$keys.on('focus', (index) => this.focused = index);
+
+                this.$keys.on('enter', () => {
+                    if (this.focused === 0) {
+                        this.nextSwapText();
+                    } else if (this.focused === 1) {
+                        this.again();
+                    }
+                });
+            },
+
             async swap() {
                 this.state = 'swapping';
                 this.$socket.emit('recorder', 'swapping');
-                const endpoint = `/process/${this.videoId}`;
-                const req = await window.fetch(endpoint);
-                this.state = 'ready';
+
+                // If we want: disableSwap=1 can be added to disable swapping
+                if (this.$store.state.swapVideo) {
+                    const endpoint = `/process/${this.videoId}`;
+                    const req = await window.fetch(endpoint);
+                }
             }
         },
 
         async mounted() {
             this.swap();
-            this.$keys.on('enter', this.again.bind(this));
+            this.countdown();
+            this.setupKeys();
         }
     }
 </script>
