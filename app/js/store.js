@@ -77,6 +77,8 @@ export class Store {
             mutations : {
                 disableSwap: (state) => state.swapVideo = false,
 
+                muted: (state) => state.muted = true,
+
                 recordingTime: (state, time) => state.recordingTime = parseInt(time),
 
                 screen: (state, screen) => state.screen = screen,

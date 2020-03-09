@@ -31,6 +31,7 @@
         methods : {
             start() {
                 this.$sounds.play('transform');
+                this.$music.play('placeholder');
                 this.$socket.emit('recorder', 'start');
                 this.$store.commit('step', 'explain');
             }

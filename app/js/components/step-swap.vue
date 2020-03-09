@@ -123,6 +123,7 @@
         },
 
         async mounted() {
+            this.$music.muted = false;
             this.swap();
             this.countdown();
             this.setupKeys();

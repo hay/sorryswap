@@ -97,6 +97,7 @@
         },
 
         async mounted() {
+            this.$music.muted = true;
             this.$refs.progress.style.transitionDuration = this.recordingTime + 's';
             this.setupRecorder();
             await timeout(2000);

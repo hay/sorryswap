@@ -37,10 +37,13 @@ screens = ['index', 'recorder', 'share', 'status', 'viewer']
 server = "http://localhost:3000"
 share_link = "http://192.168.178.153:3000/?code="
 shortcode_endpoint = "/shortcode"
-sounds = ["beep", "bla", "click", "jump", "music", "robot", "transform", "woopwoop", "wrong"]
+sounds = [
+    "beep", "bla", "click", "jump", "music", "robot", "transform", "woopwoop",
+    "wrong", "placeholder"
+]
 steps = [
-    "splash", "explain", "choosevideo", "choosescript", "chooseconfirm", "record", "replay",
-    "swap", "share"
+    "splash", "explain", "choosevideo", "choosescript", "chooseconfirm",
+    "record", "replay", "swap", "share"
 ]
 upload_endpoint = "/upload"
 
