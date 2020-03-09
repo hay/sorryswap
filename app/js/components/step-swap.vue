@@ -82,6 +82,7 @@
 
             nextSwapText() {
                 this.textIndex = (this.textIndex + 1) % this.allSwapTexts.length;
+                this.$sounds.play('wrong');
             },
 
             setupKeys() {
@@ -96,13 +97,14 @@
                     if (this.focused === 0) {
                         this.nextSwapText();
                     } else if (this.focused === 1) {
-                        this.again();
+                        this.share();
                     }
                 });
             },
 
             share() {
                 this.$store.commit('step', 'share');
+                this.$sounds.play('woopwoop');
             },
 
             async swap() {

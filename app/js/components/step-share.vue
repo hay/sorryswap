@@ -15,10 +15,18 @@
                 om later de video op te halen.</p>
 
                 <el-qrcode
-                    v-if="shortcode"
+                    v-if="url"
                     v-bind:text="url"></el-qrcode>
 
-                <pre class="recorder__code">{{shortcode}}</pre>
+                <pre
+                    v-if="shortcode"
+                    class="recorder__code">{{shortcode}}</pre>
+
+                <p v-if="!shortcode">
+                    <strong>
+                        Er ging iets mis met het ophalen van je code. Vraag om hulp.
+                    </strong>
+                </p>
             </div>
 
             <menu class="recorder__actions">
@@ -40,12 +48,14 @@
         computed : {
             shortcode() {
                 const meta = this.$store.state.videoMeta;
-                if (!meta || !meta.outputData) return null;
+                if (!meta || !meta.uploadData) return null;
 
-                return meta.outputData.shortcode;
+                return meta.uploadData.shortcode;
             },
 
             url() {
+                if (!this.shortcode) return null;
+
                 const endpoint = this.$store.state.conf.app.share_link;
                 return `${endpoint}${this.shortcode}`
             }
