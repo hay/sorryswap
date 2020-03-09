@@ -10,12 +10,12 @@
                     class="el-recorder__video"
                     ref="video" autoplay playsinline></video>
 
-                <div class="el-recorder__gifs">
+<!--                 <div class="el-recorder__gifs">
                     <img src="/static/img/cat1.gif" />
                     <img src="/static/img/cat2.gif" />
                     <img src="/static/img/duck1.gif" />
                     <img src="/static/img/duck2.gif" />
-                </div>
+                </div> -->
 
                 <el-textbar
                     ref="textbar"
