@@ -14,4 +14,10 @@
         font-family: monospace;
         padding: 0 1rem 1rem 1rem;
     }
+
+    &__text a {
+        text-decoration: none;
+        color: black;
+        display: inline;
+    }
 }

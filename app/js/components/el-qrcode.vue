@@ -6,7 +6,10 @@
             class="el-qrcode__canvas"
             ref="canvas"></canvas>
 
-        <pre class="el-qrcode__text">{{text}}</pre>
+        <output class="el-qrcode__text">
+            <a v-bind:href="text"
+               target="_blank">{{text}}</a>
+        </output>
     </div>
 </template>
 

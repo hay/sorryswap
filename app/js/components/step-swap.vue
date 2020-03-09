@@ -123,7 +123,10 @@
         },
 
         async mounted() {
-            this.$music.muted = false;
+            if (!this.$store.state.muted) {
+                this.$music.muted = false;
+            }
+
             this.swap();
             this.countdown();
             this.setupKeys();

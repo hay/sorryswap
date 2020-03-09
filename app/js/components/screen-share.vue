@@ -82,6 +82,10 @@
                 // TODO: add an API method for getting back the URL
                 return `files/output/${this.video.id}.mp4`;
             },
+
+            videos() {
+                return this.$store.state.videos;
+            }
         },
 
         data() {
@@ -120,6 +124,14 @@
                 const shortcode = url.match(URL_PARAM_REGEX);
 
                 return shortcode ? shortcode[1] : null;
+            }
+        },
+
+        watch : {
+            videos() {
+                // If there are new videos, refresh the thing to check
+                // if there is a new video
+                this.fetch();
             }
         }
     };
