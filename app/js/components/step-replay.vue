@@ -30,6 +30,7 @@
         computed : {
             src() {
                 const id = this.$store.state.videoId;
+
                 // TODO: add an API method for getting back the URL
                 return `files/uploads/${id}.webm`;
             }

@@ -1,6 +1,9 @@
 const fs = require('fs');
 const fsPromise = require('fs').promises;
 const pathlib = require('path');
+const { range, sample } = require('lodash');
+
+const CONF = require('../conf.js')();
 
 module.exports = {
     fileExists(path) {
@@ -13,6 +16,12 @@ module.exports = {
 
     getIsoDate() {
         return new Date().toISOString().slice(0, 16)
+    },
+
+    getShortCode() {
+        const chars = CONF.server.short_code_chars;
+        const len = CONF.server.short_code_length;
+        return range(len).map(() => sample(chars)).join('');
     },
 
     async loadJson(path) {

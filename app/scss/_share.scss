@@ -1,0 +1,63 @@
+@keyframes pulse {
+    from {
+        background: $c-3;
+    }
+
+    to {
+        background: $c-4;
+    }
+}
+
+.share {
+    font-family: $font-interface;
+    background: $gradient-1;
+    color: black;
+
+    width: 100%;
+    min-height: 100vh;
+    @include flex-center;
+
+    &__section {
+        @include flex-center;
+    }
+
+    &__logo {
+        width: 100%;
+        max-width: 60rem;
+        padding: 1rem;
+    }
+
+    &__text {
+        padding: 2rem;
+        font-size: 2.5rem;
+    }
+
+    &__input {
+        display: flex;
+    }
+
+    &__inputcode {
+        font-size: 4rem;
+        padding: 1rem;
+        width: 13rem;
+        height: 5rem;
+        text-align: center;
+    }
+
+    &__inputbtn {
+        @include wh(5rem);
+        color: white;
+        padding: 1rem;
+        animation: pulse .25s infinite alternate linear;
+    }
+
+    &__inputbtn[disabled] {
+        background: $c-6;
+        animation: none;
+    }
+
+    &__video {
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+}

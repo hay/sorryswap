@@ -7,7 +7,7 @@ const exec = util.promisify(require('child_process').exec);
 
 const CONF = require('../conf.js')();
 const Logger = require('./logger.js');
-const { fileExists, getIsoDate, loadJson, writeJson, parsePath } = require('./util.js');
+const { fileExists, getIsoDate, getShortCode, loadJson, writeJson, parsePath } = require('./util.js');
 const { ServerError } = require('./errors.js');
 const { Video } = require('./video.js');
 
@@ -29,6 +29,25 @@ module.exports = class Server {
         this.setupProcess();
         this.setupInfo();
         this.setupOutput();
+        this.setupShortCode();
+    }
+
+    async getAllVideos() {
+        const ext = CONF.server.output_video_extension;
+        const path = CONF.server.output_path;
+        const videos = await glob(`${path}/*.${ext}`);
+
+        // Now loop over the videos and get json data, and
+        // return that
+        const output = [];
+
+        const ids = videos.map(parsePath).map(p => p.stem);
+
+        for (const id of ids) {
+            output.push(await this.getVideo(id));
+        }
+
+        return output;
     }
 
     async getVideo(id) {
@@ -36,13 +55,16 @@ module.exports = class Server {
         return await video.getData();
     }
 
-    async handleUpload(file, meta) {
+    async handleUpload(file, metaJson) {
         // TODO: for now we just use the filename as an id, and save that
         // together with the meta. We should use some kind of other
         // mechanism here, pref. backed by a database
         const id = file.filename;
 
         this.log(`Handling ${id}`);
+
+        const meta = JSON.parse(metaJson);
+        this.log(`With meta: ${JSON.stringify(meta)}`);
 
         // If this is anything else than supported, abort
         const mimetypes = CONF.server.allowed_upload_mimetypes;
@@ -56,9 +78,14 @@ module.exports = class Server {
         await fs.rename(file.path, newPath);
         this.log(`Saved upload as ${newPath}`);
 
+        // Add the shortcode, id and re-parse
+        meta.id = id;
+        meta.shortcode = getShortCode();
+        this.log(`Shortcode: ${meta.shortcode}`);
+
         // And save the config file
         const metaPath = file.path + '.json';
-        await fs.writeFile(metaPath, meta);
+        await fs.writeFile(metaPath, JSON.stringify(meta, null, 4));
         this.log(`Saved upload meta as ${metaPath}`);
 
         return id;
@@ -130,20 +157,7 @@ module.exports = class Server {
 
     setupOutput() {
         this.app.get('/output', async (req, res) => {
-            const ext = CONF.server.output_video_extension;
-            const path = CONF.server.output_path;
-            const videos = await glob(`${path}/*.${ext}`);
-
-            // Now loop over the videos and get json data, and
-            // return that
-            const output = [];
-
-            const ids = videos.map(parsePath).map(p => p.stem);
-
-            for (const id of ids) {
-                output.push(await this.getVideo(id));
-            }
-
+            const output = await this.getAllVideos();
             res.send(output);
         });
     }
@@ -163,12 +177,32 @@ module.exports = class Server {
         });
     }
 
+    setupShortCode() {
+        this.app.get('/shortcode/:id', async (req, res) => {
+            // Loop over all videos and check if we can find one with
+            // a shortcode
+            const shortcode = req.params.id.toLowerCase();
+            const videos = await this.getAllVideos();
+
+            for (const video of videos) {
+                if (video.outputData.shortcode === shortcode) {
+                    res.send(video);
+                    return;
+                }
+            }
+
+            const e = new ServerError(CONF.errors.shortcode_not_found);
+            res.status(e.status).send(e.message);
+        });
+    }
+
     setupUploads() {
         this.app.post('/upload', this.upload.single('video'), async (req, res, next) => {
             this.log('Got a file upload');
             let id = 'UNDEFINED';
 
             try {
+                // I *guess* multer adds an ID to the file, but i'm not sure
                 id = await this.handleUpload(req.file, req.body.meta);
             } catch(e) {
                 res.status(e.status).send(e.message);

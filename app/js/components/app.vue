@@ -2,6 +2,7 @@
     <div>
         <screen-index v-if="screen === 'index'"></screen-index>
         <screen-recorder v-if="screen === 'recorder'"></screen-recorder>
+        <screen-share v-if="screen === 'share'"></screen-share>
         <screen-status v-if="screen === 'status'"></screen-status>
         <screen-viewer v-if="screen === 'viewer'"></screen-viewer>
         <pre v-if="!isScreen">Invalid screen</pre>
@@ -11,6 +12,7 @@
 <script>
     import ScreenIndex from './screen-index.vue';
     import ScreenRecorder from './screen-recorder.vue';
+    import ScreenShare from './screen-share.vue';
     import ScreenStatus from './screen-status.vue';
     import ScreenViewer from './screen-viewer.vue';
 
@@ -18,6 +20,7 @@
         components : {
             ScreenIndex,
             ScreenRecorder,
+            ScreenShare,
             ScreenStatus,
             ScreenViewer
         },

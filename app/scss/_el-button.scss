@@ -14,12 +14,21 @@
     color: white;
     border: 1rem solid transparent;
 
-    &--big {
-        font-size: 5rem;
+    &--big,
+    &--download {
         text-align: center;
         background: $c-4;
         border-radius: 1rem;
         padding: 1rem 2rem;
+
+    }
+
+    &--download {
+        font-size: 3rem;
+    }
+
+    &--big {
+        font-size: 5rem;
         animation: btn--big 2s infinite alternate
     }
 

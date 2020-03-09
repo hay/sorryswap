@@ -34,7 +34,8 @@
         data() {
             return {
                 props : [
-                    'recordTime', 'swapDate', 'targetVideo', 'targetScript', 'swapTime'
+                    'recordTime', 'swapDate', 'targetVideo', 'targetScript',
+                    'swapTime', 'shortcode'
                 ]
             }
         }

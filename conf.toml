@@ -2,6 +2,11 @@
 debug = true
 output_video_time = 30
 
+[errors]
+invalid_mimetype = ["415", "Invalid mimetype"]
+shortcode_not_found = ["404", "Video with shortcode not found"]
+video_not_found = ["404", "Video with ID not found"]
+
 [server]
 allowed_upload_mimetypes = ['video/webm']
 files_path = "files"
@@ -9,6 +14,8 @@ log_path = "logs/server.log"
 output_path = "files/output"
 output_video_extension = "mp4"
 port = 3000
+short_code_chars = "abcdefghjkmnpqrstuvwxyz123456789"
+short_code_length = 4
 static_path = "dist"
 target_path = "files/target"
 upload_video_extension = "webm"
@@ -25,8 +32,9 @@ keycodes.enter = 13
 output_endpoint = "/output"
 process_endpoint = "/process"
 recording_time = 30
-screens = ['index', 'recorder', 'status', 'viewer']
+screens = ['index', 'recorder', 'share', 'status', 'viewer']
 server = "http://localhost:3000"
+shortcode_endpoint = "/shortcode"
 sounds = ["beep", "bla", "click", "jump", "music", "robot", "transform", "woopwoop", "wrong"]
 steps = [
     "splash", "explain", "choosevideo", "choosescript", "chooseconfirm", "record", "replay",
@@ -57,10 +65,6 @@ btn = "Ok, ik heb toch niks beters te doen"
 [[app.swaptext]]
 text = "En heb je nagedacht over de rechten? Hoe zit het met het copyright?"
 btn = "Ik ken nog wel een goede advocaat"
-
-[errors]
-invalid_mimetype = ["415", "Invalid mimetype"]
-video_not_found = ["404", "Video with ID not found"]
 
 [[target]]
 id = "1"
