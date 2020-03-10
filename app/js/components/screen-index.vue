@@ -1,29 +1,35 @@
 <template>
-    <div>
-        <h1>Sorryswap</h1>
+    <div class="recorder">
+        <div class="recorder__content">
+            <img class="recorder__logo recorder__logo--splash"
+                 src="../../static/img/logo.svg" />
 
-        <ul>
-            <li v-for="screen in screens">
-                <a v-bind:href="'#screen=' + screen">{{screen}}</a>
-            </li>
-        </ul>
-
-        <button v-on:click="echo">echo</button>
+            <menu class="recorder__list">
+                <el-button
+                    v-for="screen in screens"
+                    v-on:click="go(screen)"
+                    v-bind:text="screen"></el-button>
+            </menu>
+        </div>
     </div>
 </template>
 
 <script>
-export default {
-    computed : {
-        screens() {
-            return this.$store.state.conf.app.screens;
-        }
-    },
+    export default {
+        computed : {
+            screens() {
+                return this.$store.state.conf.app.screens;
+            }
+        },
 
-    methods : {
-        echo() {
-            this.$socket.emit('clientlog', Date.now());
+        methods : {
+            go(screen) {
+                this.$store.commit('screen', screen);
+            },
+
+            mounted() {
+                this.$socket.emit('index', Date.now());
+            }
         }
-    }
-};
+    };
 </script>

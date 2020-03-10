@@ -108,6 +108,12 @@
             },
 
             async fetch() {
+                // Easter egg: go to debug screen
+                if (this.shortcode === this.$store.state.conf.app.debug_code) {
+                    this.$store.commit('screen', 'index');
+                    return;
+                }
+
                 if (!this.shortcodeValid) return;
 
                 const data = await getJson(this.endpoint);
