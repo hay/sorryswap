@@ -4,8 +4,10 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "app-build": "rm -rf dist && parcel build --public-url '.' app/index.html",
+    "app-build": "npm run clean && parcel build --public-url '.' app/index.html && npm run copy:target",
     "app-dev": "parcel app/index.html",
+    "clean" : "rm -rf dist",
+    "copy:target" : "mkdir dist/files && cp -rv files/target dist/files/",
     "dev": "node index.js & npm run app-dev"
   },
   "alias": {

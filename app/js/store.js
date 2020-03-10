@@ -33,6 +33,7 @@ export class Store {
                     return target;
                 }),
                 targetVideo : null,
+                uploadVideo : true,
                 videoId : null,
                 videoMeta : null,
                 videos : []
@@ -76,6 +77,8 @@ export class Store {
 
             mutations : {
                 disableSwap: (state) => state.swapVideo = false,
+
+                disableVideo: (state) => state.uploadVideo = false,
 
                 muted: (state) => state.muted = true,
 
