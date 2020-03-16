@@ -78,11 +78,11 @@ name = "Laura Lee"
 
 [[target]]
 id = "2"
-name = "Kim Kardashian"
+name = "Bill Clinton"
 
 [[target]]
 id = "3"
-name = "Mark Zuckerberg"
+name = "South Park"
 
 [[target]]
 id = "4"
@@ -90,42 +90,103 @@ name = "Logan Paul"
 
 [[target]]
 id = "5"
-name = "Dotan"
+name = "Donald Trump"
 
 [[target]]
 id = "6"
-name = "James Charles"
+name = "Kardinaal Eijk"
 
 [[target]]
 id = "7"
-name = "Logan Paul (SD)"
+name = "Kendall Jenner"
+
+[[target]]
+id = "8"
+name = "Mark Rutte"
+
+[[target]]
+id = "9"
+name = "Mark Zuckerberg"
 
 [[target]]
 id = "1b"
-name = "Laura Lee (kort)"
+name = "Laura Lee (SD)"
+debug = true
+
+[[target]]
+id = "4b"
+name = "Logan Paul (SD)"
+debug = true
 
 [[script]]
-name = "Klimaat"
+name = "Sorry voor het vliegen"
 text = """
-Ik schaam me diep. Het is niet alsof ik me er niet mee bezig houd, ik eet heus niet elke dag vlees en ik heb zo’n meeneem beker voor mijn koffie in de trein. Laatst heb ik zelfs zo’n zakje gekocht voor de broodjes in de supermarkt zodat ik geen plastic meer hoef te gebruiken. Maar ik wil zo graag licht gebruind aan de rand van een infinity pool zitten, met een smoothiebowl met sterfruit en chiazaad in m’n hand, en daarvoor moet ik gewoon naar Bali. En om naar Bali te komen moet ik nou eenmaal vliegen. Voor de goede orde, ik heb wel dat vakje aangevinkt om mij CO2 uitstoot te neutraliseren, dus dan zijn we cool. Toch? Lief klimaat? Toch?"""
+Lief Klimaat, het spijt me.
+Het is niet alsof je me niet bezig houdt, ik eet heus niet elke dag vlees en ik heb zo’n meeneem beker voor mijn koffie in de trein.
+Maar ik wil zo graag licht gebruind aan de rand van een infinity pool zitten, met een smoothiebowl met sterfruit en chiazaad in m’n hand, en daarvoor moet ik gewoon naar Bali. En om naar Bali te komen moet ik nou eenmaal vliegen.
+Voor de goede orde, ik heb wel dat vakje aangevinkt om mijn CO2 uitstoot te neutraliseren, dus dan zijn we cool.
+Toch? Lief klimaat? Toch?
+"""
 
 [[script]]
-name = "Mam"
+name = "Sorry, mam"
 text = """
-Ik kom niet genoeg langs
-Het is Vaker bellen, ik heb het gewoon heel druk. """
+Lieve mam, het spijt me.
+Ik weet dat ik beloofd had volgend weekend langs te komen en mee te gaan naar de verjaardag van die ene tante die een beetje naar Zwitsal ruikt.
+Maar er is toch weer een feestje hier in de stad, en een etentje wat ik eigenlijk niet wil missen, maar we kunnen ook wel even bellen, toch?
+Dan praten we bij.
+Of desnoods app ik hoe het gaat, dat gaat nog sneller.
+Ik heb het gewoon erg druk, ik hoop dat jullie dat begrijpen.
+Anders checken jullie m’n stories gewoon, zijn jullie ook op de hoogte. Zien we elkaar dat weekend daarna wel weer.
+"""
 
 [[script]]
-name = "Nederland"
+name = "Sorry aan Nederland"
 text = """
-Ik heb niet gestemd bij de waterschapsverkiezingen. Ik heb niet eens opgezocht wat waterschap precies is, terwijl ik wel altijd roep dat iedereen gebruik moet maken van zijn democratische recht. Maar het klonk zo onbelangrijk omdat het me alleen maar deed denken aan Waterschapsheuvel wat vooral over zielige konijntjes ging. """
+Lieve democratie, het spijt me.
+Ik heb niet gestemd bij de waterschapsverkiezingen.
+Ik heb niet eens opgezocht wat waterschap precies is, terwijl ik wel altijd roep dat iedereen gebruik moet maken van zijn democratische recht.
+Maar het klonk zo onbelangrijk omdat het me alleen maar deed denken aan Waterschapsheuvel wat vooral over zielige konijntjes ging.
+En nou heeft die partij waar ik de kriebels van krijg het zo goed gedaan, dat ik nog harder wil roepen dat iedereen moet stemmen.
+"""
 
 [[script]]
-name = "Geghost"
+name = "Corporate Sorry"
 text = """
-Ik denk dat het komt omdat ik appen niet echt zie als chatten maar meer als mailen, dus dan beslis ik later wel of ik antwoord. En dat doe ik dan alsnog niet omdat het toch appen is, en ons gesprek dan onderin de lijst raakt, onder de gesprekken die ik wel voer en de mensen waar ik wel op reageer. Omdat ik daar dan wel zin in heb, en in jou eigenlijk niet, want je appt altijd precies op het verkeerde moment. En op een heel irritante manier. Je hoeft niet te eindigen met groetjes. Maar het ligt niet aan jou, echt niet, het ligt aan mij, ik zal beter m’n best doen. Morgen. Want dan stuur ik je wat terug, beloofd."""
+Recent is er informatie aan het licht gekomen dat ons allen heeft geschokt en een discussie op gang heeft gebracht.
+Deze situatie is pijnlijk, dat zien wij natuurlijk in, en daarbij kan onze reactie niet ontbreken. We begrijpen de aantijgingen maar zien ook een moment om dit gesprek goed en fatsoenlijk te voeren.
+Er zijn namelijk verschillende kanten die hier belicht kunnen worden. Eén kant is al veelvuldig behandeld maar dit heeft ook de andere kanten overschaduwt.
+We zien namelijk een grotere aandacht naar dat wat nu ook wel het officiële verhaal genoemd wordt.
+Dit betekent niet dat dit gelogen is. Ik wil met klem benadrukken dat we het serieus nemen, ik ben echter wel van mening dat een nuance vereist is.
+Hierbij is het van uiterst belang om de steken die we hebben laten vallen op te rapen, en na te gaan hoe deze zijn komen te vallen.
+Een leerproces kan enkel tot stand komen door feedback en wij accepteren natuurlijk deze feedback.
+Maar feedback kan ook aantijgingen vormen die niet kloppen met de realiteit. Daar moeten we allen voor waken, want, als ik heel eerlijk ben, ben ik alleen maar positief over de toekomst.
+We behandelen daarom de aantijgingen zorgvuldig, reageren hier oprecht op en nemen het mee met de progressieve lijn waar we op zitten.
+Dankuwel voor het luisteren en nog een fijne dag toegewenst
+"""
 
 [[script]]
-name = "Plant"
+name = "Sorry voor het ghosten"
 text = """
-Sorry dat je dood bent. Ik had het moeten zien aankomen, je verslapte wat en stilletjes als je bent, heb ik niet op tijd gemerkt dat je me nodig had. Terwijl dat wel de afspraak was, ik haalde jou in huis en zou voor je zorgen. Je af en toe wat bemesten, je wat natspuiten, en vooral veel bewonderen. En juist daarom is het zo schandelijk, ik heb je bruin wordende randjes, je hangende blaadjes, je droge aarde niet gezien, je stille schreeuw om aandacht niet gehoord. Totdat het te laat was. Of misschien niet, ik giet voor de zekerheid nu dan maar een absurde hoeveelheid water in je pot, waar hoogstwaarschijnlijk alleen nog maar je wortels van gaan rotten, maar dan heb ik in elk geval het gevoel dat ik heb gedaan wat ik kon. En kan ik met een gerust hart zaterdag weer naar de Intratuin. """
+Lief onbelangrijk persoon, het spijt me.
+Ik denk dat het komt omdat ik appen niet echt zie als chatten maar meer als mailen, dus dan beslis ik later wel of ik antwoord.
+En dat doe ik dan alsnog niet omdat het toch appen is, en ons gesprek dan onderin de lijst raakt, onder de gesprekken die ik wel voer en de mensen waar ik wel op reageer.
+Omdat ik daar wel zin in heb, en in jou eigenlijk niet,
+want je appt altijd precies op het verkeerde moment.
+En op een heel irritante manier.
+Je hoeft niet te eindigen met groetjes.
+Maar het ligt niet aan jou, echt niet, het ligt aan mij, ik zal beter m’n best doen.
+Morgen. Want dan stuur ik je wat terug, beloofd.
+"""
+
+[[script]]
+name = "Sorry aan de plant"
+text = """
+Lieve kamerplant, het spijt me.
+Sorry dat je dood bent. Ik had het moeten zien aankomen, je verslapte wat en stilletjes als je bent, heb ik niet op tijd gemerkt dat je me nodig had.
+Ik zou voor je zorgen, je af en toe wat bemesten, je natspuiten, en vooral veel bewonderen.
+Maar ik heb je bruin wordende randjes, je hangende blaadjes, je droge aarde niet gezien, je stille schreeuw om aandacht niet gehoord.
+Totdat het te laat was.
+Ik giet voor de zekerheid nog een absurde hoeveelheid water in je pot, waar hoogstwaarschijnlijk alleen maar je wortels van gaan rotten, maar dan heb ik in elk geval het gevoel dat ik heb gedaan wat ik kon.
+En kan ik met een gerust hart zaterdag weer naar de Intratuin.
+"""

@@ -78,7 +78,7 @@ export class Store {
             mutations : {
                 disableSwap: (state) => state.swapVideo = false,
 
-                disableVideo: (state) => state.uploadVideo = false,
+                disableUpload: (state) => state.uploadVideo = false,
 
                 muted: (state) => state.muted = true,
 
