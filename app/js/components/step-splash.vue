@@ -1,33 +1,24 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__animation">
-            <img src="../../static/img/bg-star.svg" />
-        </div>
+    <div class="step step--splash"
+         background="blue">
 
-        <div class="recorder__content">
-            <img class="recorder__logo recorder__logo--splash" src="../../static/img/logo.svg" />
+        <img src="/static/img/face.png"
+             class="step__face" />
 
-            <el-button
-                focused
-                v-on:click="start"
-                text="Druk op de knop om te starten!"
-                type="big"></el-button>
-        </div>
+        <img src="/static/img/logo.png"
+             class="step__logo" />
 
-        <el-animation></el-animation>
-        <el-animation></el-animation>
-        <el-animation></el-animation>
+        <el-button
+            class="step__start"
+            focused
+            v-on:click="start"
+            text="Start!"
+            type="small"></el-button>
     </div>
 </template>
 
 <script>
-    import ElAnimation from './el-animation.vue';
-
     export default {
-        components : {
-            ElAnimation
-        },
-
         methods : {
             start() {
                 this.$sounds.play('transform');

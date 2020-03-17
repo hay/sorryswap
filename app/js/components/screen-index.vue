@@ -2,7 +2,7 @@
     <div class="recorder">
         <div class="recorder__content">
             <img class="recorder__logo recorder__logo--splash"
-                 src="../../static/img/logo.svg" />
+                 src="../../static/img/logo.png" />
 
             <menu class="recorder__list">
                 <el-button

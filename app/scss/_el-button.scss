@@ -1,61 +1,24 @@
-@keyframes btn--big {
-    from {
-        transform: rotate(0deg) scale(1);
-        background: $c-4;
-    }
-
-    to {
-        transform: rotate(-2deg) scale(1.2);
-        background: $c-3;
-    }
-}
-
 .el-button {
-    color: white;
-    border: 1rem solid transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
-    &--big,
-    &--download {
-        text-align: center;
-        background: $c-4;
-        border-radius: 1rem;
-        padding: 1rem 2rem;
-
-    }
-
-    &--download {
-        font-size: 3rem;
-    }
-
-    &--big {
+    &__text {
+        color: $c-1;
         font-size: 5rem;
-        animation: btn--big 2s infinite alternate
-    }
-
-    &--normal {
-        background: $c-4;
-        font-size: 4rem;
+        font-family: Arcade;
         text-align: center;
-        padding: 1rem;
-    }
-
-    &--video {
-        background: black;
+        text-transform: lowercase;
         position: relative;
+        top: 1rem;
     }
 
-    &--video &__text {
-        position: absolute;
-        background: black;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 1rem;
+    &[focused] &__text {
+        border-bottom: 3px solid $c-1;
     }
 
-    // The focus class should be .focus, but for some reason that doesn't
-    // get applied
-    &[focused] {
-        border: 1rem solid $c-5;
+    &--small {
+        @include wh(30rem, 20rem);
+        background-image: url('../static/img/el-button-small.png');
     }
 }

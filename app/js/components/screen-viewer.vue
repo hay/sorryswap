@@ -1,6 +1,6 @@
 <template>
     <div class="viewer" v-on:click="playVideo">
-        <img class="viewer__logo" src="../../static/img/logo.svg" />
+        <img class="viewer__logo" src="../../static/img/logo.png" />
 
         <video
             class="viewer__video"

@@ -1,6 +1,20 @@
 @font-face {
-    font-family: 'Bangers';
+    font-family: 'Abadi';
     font-weight: normal;
     font-style: normal;
-    src: url('../static/fonts/bangers.woff2') format('woff2');
+    src: url('../static/fonts/abadi.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Arcade';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../static/fonts/arcade.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Gradius';
+    font-weight: normal;
+    font-style: normal;
+    src: url('../static/fonts/gradius.woff') format('woff');
 }

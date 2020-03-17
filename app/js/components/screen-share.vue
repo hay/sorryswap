@@ -3,7 +3,7 @@
         <img
             v-show="!video"
             class="share__logo"
-            src="../../static/img/logo.svg" />
+            src="../../static/img/logo.png" />
 
         <section
             class="share__section"

@@ -1,0 +1,30 @@
+.step {
+    position: relative;
+    @include wh(100%);
+    padding: 2rem;
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+
+    &[background="blue"] { background-image: url('../static/img/bg-blue.jpg') }
+    &[background="blue-stars"] { background-image: url('../static/img/bg-blue-stars.jpg') }
+    &[background="purple"] { background-image: url('../static/img/bg-purple.jpg') }
+    &[background="stars"] { background-image: url('../static/img/bg-stars.jpg') }
+    &[background="textbox"] { background-image: url('../static/img/bg-textbox.jpg') }
+
+    &__face {
+        @include transform-center;
+        width: 50vw;
+    }
+
+    &__logo {
+        @include transform-center-horizontal;
+        width: 80vw;
+        top: 5rem;
+    }
+
+    &__start {
+        @include transform-center-horizontal;
+        bottom: 3rem;
+    }
+}

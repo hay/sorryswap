@@ -46,7 +46,6 @@
             },
 
             type : {
-                default : 'normal',
                 type : String
             }
         }
