@@ -48,7 +48,7 @@
             });
 
             this.$keys.on('focus', (index) => this.focused = index);
-            this.$keys.on('enter', () => this.selectScript(this.scripts[this.focused].name))
+            this.$keys.on('enter', () => this.selectScript(this.scripts[this.focused].id))
         }
     }
 </script>

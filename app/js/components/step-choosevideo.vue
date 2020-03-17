@@ -3,7 +3,7 @@
          flair="stars">
         <h1 class="step__headline">Kies een beroemdheid</h1>
 
-        <ul class="itemgrid">
+        <ul class="itemgrid itemgrid--media">
             <li v-for="(video, index) in videos"
                 class="itemgrid__item">
                 <video class="itemgrid__video"

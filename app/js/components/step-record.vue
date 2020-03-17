@@ -1,24 +1,24 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__content">
-            <div class="el-recorder">
-                <div class="el-recorder__progress"
-                     ref="progress"
-                     v-bind:running="recording"></div>
-
-                <video
-                    class="el-recorder__video"
-                    ref="video" autoplay playsinline></video>
-
-                <el-textbar
-                    ref="textbar"
-                    v-bind:duration="textbarDuration"
-                    v-bind:text="script.text"></el-textbar>
-            </div>
+    <div class="step"
+         flair="blue-stars">
+        <div class="step__recorder">
+            <video ref="video"
+                   autoplay
+                   playsinline></video>
 
             <div v-if="count > 0" class="counter">
                 <span>{{count}}</span>
             </div>
+        </div>
+
+        <div class="step__progress"
+             ref="progress"
+             v-bind:running="recording"></div>
+
+        <el-textbar
+            ref="textbar"
+            v-bind:duration="textbarDuration"
+            v-bind:text="script.text"></el-textbar>
     </div>
 </template>
 

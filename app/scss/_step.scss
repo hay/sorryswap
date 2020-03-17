@@ -82,6 +82,7 @@
     }
 
     &[flair="textbox"] .el-button {
+        position: absolute;
         right: 20rem;
         bottom: 5rem;
     }
@@ -149,5 +150,22 @@
 
     &__actions > * {
         margin: 0 2rem;
+    }
+
+    &__progress {
+        @include wh(80rem, 3rem); // Same width as recorder
+    }
+
+    &__progress:after {
+        content: '';
+        display: block;
+        @include wh(100%);
+        background: $c-3;
+        transition-timing-function: linear;
+        transition-duration: 30s;
+    }
+
+    &__progress[running]:after {
+        width: 0%;
     }
 }
