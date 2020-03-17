@@ -59,7 +59,7 @@ export class Store {
                         return null;
                     }
 
-                    return find(state.targetScripts, ['name', state.targetScript]);
+                    return find(state.targetScripts, ['id', state.targetScript]);
                 },
 
                 targetVideo(state, getters) {

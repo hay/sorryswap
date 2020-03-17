@@ -112,6 +112,7 @@ name = "Mark Zuckerberg"
 
 
 [[script]]
+id = "vliegen"
 name = "Sorry voor het vliegen"
 text = """
 Lief Klimaat, het spijt me.
@@ -122,6 +123,7 @@ Toch? Lief klimaat? Toch?
 """
 
 [[script]]
+id = "mam"
 name = "Sorry, mam"
 text = """
 Lieve mam, het spijt me.
@@ -134,6 +136,7 @@ Anders checken jullie m’n stories gewoon, zijn jullie ook op de hoogte. Zien w
 """
 
 [[script]]
+id = "nederland"
 name = "Sorry aan Nederland"
 text = """
 Lieve democratie, het spijt me.
@@ -144,6 +147,7 @@ En nou heeft die partij waar ik de kriebels van krijg het zo goed gedaan, dat ik
 """
 
 [[script]]
+id = "corporate"
 name = "Corporate Sorry"
 text = """
 Recent is er informatie aan het licht gekomen dat ons allen heeft geschokt en een discussie op gang heeft gebracht.
@@ -159,6 +163,7 @@ Dankuwel voor het luisteren en nog een fijne dag toegewenst
 """
 
 [[script]]
+id = "ghosten"
 name = "Sorry voor het ghosten"
 text = """
 Lief onbelangrijk persoon, het spijt me.
@@ -173,6 +178,7 @@ Morgen. Want dan stuur ik je wat terug, beloofd.
 """
 
 [[script]]
+id = "plant"
 name = "Sorry aan de plant"
 text = """
 Lieve kamerplant, het spijt me.

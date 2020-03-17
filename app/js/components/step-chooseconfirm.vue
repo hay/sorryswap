@@ -1,38 +1,37 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__content">
-            <h2 class="recorder__headline">
-                Bevestig je keuze
-            </h2>
-
-            <div class="recorder__list">
-                <section class="recorder__panel">
-                    <video v-bind:src="video.src"
-                          autoplay loop playsinline muted></video>
-                    <h3 class="recorder__label">{{video.name}}</h3>
-                </section>
-
-                <div class="recorder__panel">
-                    <section class="recorder__text">
-                        Jouw gekozen script: <strong>{{script.name}}</strong>
-                    </section>
-                </div>
-            </div>
-
-            <menu class="recorder__actions">
-                <el-button
-                    v-bind:focused="focused === 0"
-                    v-on:click="back"
-                    text="Pas aan"></el-button>
-
-                <el-button
-                    v-bind:focused="focused === 1"
-                    v-on:click="ok"
-                    text="Neem op"></el-button>
-            </menu>
+    <div class="step"
+         flair="blue-stars">
+        <div class="step__recorder">
+            <video v-bind:src="video.src"
+                   autoplay
+                   loop
+                   playsinline
+                   muted></video>
         </div>
+
+        <div class="step__note">
+            Jouw gekozen script: <strong>{{script.name}}</strong>
+        </div>
+
+        <menu class="step__actions">
+            <el-button
+                type="small"
+                v-bind:focused="focused === 0"
+                v-on:click="back"
+                text="Pas aan"></el-button>
+
+            <el-button
+                type="small"
+                v-bind:focused="focused === 1"
+                v-on:click="ok"
+                text="Neem op"></el-button>
+        </menu>
+
+        <img src="/static/img/rabbit-side.png"
+             class="step__rabbit" />
     </div>
 </template>
+
 
 <script>
     export default {

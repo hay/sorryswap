@@ -12,7 +12,7 @@
                 <el-button
                     type="small"
                     v-bind:focused="focused === index"
-                    v-on:click="selectScript(script.name)"
+                    v-on:click="selectScript(script.id)"
                     v-bind:text="script.name"></el-button>
             </li>
         </ul>

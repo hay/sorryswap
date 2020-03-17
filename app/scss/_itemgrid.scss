@@ -4,10 +4,8 @@
     flex-wrap: wrap;
 
     &--media &__item {
+        @include background-center(contain);
         background-image: url('../static/img/border-video.png');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: contain;
     }
 
     &__item {

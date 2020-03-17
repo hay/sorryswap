@@ -70,8 +70,10 @@
         width: 80rem;
     }
 
-    .el-button {
-        position: absolute;
+    &[flair="blue-stars"] &__rabbit {
+        @include transform-center-vertical;
+        width: 30rem;
+        right: 0;
     }
 
     &[flair="blue"] .el-button {
@@ -114,5 +116,38 @@
         bottom: 10rem;
         left: 3rem;
         right: 3rem;
+    }
+
+    &[flair="blue-stars"] {
+        @include flex-center;
+        @include child-margins(3rem);
+    }
+
+    &__recorder {
+        @include background-center(contain);
+        @include wh(80rem, 45rem);
+        @include flex-center;
+        background-image: url('../static/img/border-video.png');
+        padding: 6rem;
+    }
+
+    &__recorder video {
+        @include wh(100%);
+    }
+
+    &__note {
+        background: url('../static/img/bg-carpet.png');
+        padding: 2rem;
+        text-align: center;
+        font-size: 4rem;
+        color: $c-1;
+    }
+
+    &__actions {
+        @include flex-center(row);
+    }
+
+    &__actions > * {
+        margin: 0 2rem;
     }
 }

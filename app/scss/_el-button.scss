@@ -10,7 +10,7 @@
         text-align: center;
         text-transform: lowercase;
         position: relative;
-        top: 1rem;
+        top: .5rem;
         left: -1rem;
     }
 
@@ -19,7 +19,7 @@
     }
 
     &--small {
-        @include wh(30rem, 20rem);
+        @include wh(30rem, 12rem);
         background-image: url('../static/img/el-button-small.png');
     }
 
