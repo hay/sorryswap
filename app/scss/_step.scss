@@ -38,6 +38,14 @@
         top: 4rem;
     }
 
+    &[flair="stars"] &__headline {
+        @include transform-center-horizontal;
+        top: 2rem;
+        font-size: 12rem;
+        width: 100%;
+        text-align: center;
+    }
+
     &__rabbit {
         width: 43rem;
     }
@@ -76,5 +84,13 @@
         font-family: $font-text;
         color: $c-1;
         line-height: 1.75;
+    }
+
+    .mediagrid {
+        position: absolute;
+        top: 14rem;
+        bottom: 2rem;
+        left: 3rem;
+        right: 3rem;
     }
 }

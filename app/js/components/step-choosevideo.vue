@@ -1,26 +1,24 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__content">
-            <h2 class="recorder__headline">
-                Kies een beroemdheid
-            </h2>
+    <div class="step"
+         flair="stars">
+        <h1 class="step__headline">Kies een beroemdheid</h1>
 
-            <ul class="mediagrid">
-                <li v-for="(video, index) in videos">
-                    <el-button
-                        v-bind:focused="focused === index"
-                        type="video"
-                        v-bind:text="video.name"
-                        v-on:click="selectVideo(video.id)">
-                        <video class="mediagrid__video"
-                               v-bind:data-id="video.id"
-                               v-on:mouseenter="playVideo(video.id)"
-                               muted playsinline
-                               v-bind:src="video.src"></video>
-                    </el-button>
-                </li>
-            </ul>
-        </div>
+        <ul class="mediagrid">
+            <li v-for="(video, index) in videos"
+                class="mediagrid__item">
+                <video class="mediagrid__video"
+                       v-bind:data-id="video.id"
+                       v-on:mouseenter="playVideo(video.id)"
+                       muted playsinline
+                       v-bind:src="video.src"></video>
+
+                <el-button
+                    v-bind:focused="focused === index"
+                    type="small"
+                    v-bind:text="video.name"
+                    v-on:click="selectVideo(video.id)"></el-button>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -28,7 +26,7 @@
     export default {
         computed : {
             videos() {
-                return this.$store.state.targetVideos;
+                return this.$store.getters.targetVideos;
             }
         },
 

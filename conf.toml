@@ -75,6 +75,7 @@ btn = "Ik ken nog wel een goede advocaat"
 [[target]]
 id = "1"
 name = "Laura Lee"
+debug = "1b"
 
 [[target]]
 id = "2"
@@ -87,6 +88,7 @@ name = "South Park"
 [[target]]
 id = "4"
 name = "Logan Paul"
+debug = "4b"
 
 [[target]]
 id = "5"
@@ -108,15 +110,6 @@ name = "Mark Rutte"
 id = "9"
 name = "Mark Zuckerberg"
 
-[[target]]
-id = "1b"
-name = "Laura Lee (SD)"
-debug = true
-
-[[target]]
-id = "4b"
-name = "Logan Paul (SD)"
-debug = true
 
 [[script]]
 name = "Sorry voor het vliegen"

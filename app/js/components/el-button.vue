@@ -3,9 +3,7 @@
         v-bind:class="classes"
         v-bind:focused="focused"
         v-on:click="click">
-        <slot></slot>
-        <span v-if="text"
-              class="el-button__text">{{text}}</span>
+        <span class="el-button__text">{{text}}</span>
     </button>
 </template>
 
@@ -16,11 +14,7 @@
         computed : {
             classes() {
                 const classes = ['el-button'];
-
-                if (this.type) {
-                    classes.push('el-button--' + this.type);
-                }
-
+                classes.push('el-button--' + this.type);
                 return classes;
             }
         },

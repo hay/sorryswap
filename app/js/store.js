@@ -20,6 +20,7 @@ export class Store {
         function getInitialState() {
             return {
                 conf : opts.conf,
+                debug : false,
                 muted : false,
                 recordingTime : opts.conf.app.recording_time,
                 screen : opts.conf.app.default_screen,
@@ -27,11 +28,6 @@ export class Store {
                 swapVideo : true,
                 targetScript : null,
                 targetScripts : opts.conf.script,
-                targetVideos : opts.conf.target.map((target) => {
-                    const file = `${target.id}.mp4`;
-                    target.src = `${opts.conf.server.target_path}/${file}`;
-                    return target;
-                }),
                 targetVideo : null,
                 uploadVideo : true,
                 videoId : null,
@@ -66,16 +62,29 @@ export class Store {
                     return find(state.targetScripts, ['name', state.targetScript]);
                 },
 
-                targetVideo(state) {
+                targetVideo(state, getters) {
                     if (!state.targetVideo) {
                         return null;
                     }
 
-                    return find(state.targetVideos, ['id', state.targetVideo]);
+                    return find(getters.targetVideos, ['id', state.targetVideo]);
+                },
+
+                targetVideos(state) {
+                    // Return target videos, and replace with the 'debug'
+                    // version if that flag is set
+                    return state.conf.target.map((target) => {
+                        const id = target.debug && state.debug ? target.debug : target.id;
+                        const file = `${id}.mp4`;
+                        target.src = `${opts.conf.server.target_path}/${file}`;
+                        return target;
+                    });
                 }
             },
 
             mutations : {
+                debug: (state) => state.debug = true,
+
                 disableSwap: (state) => state.swapVideo = false,
 
                 disableUpload: (state) => state.uploadVideo = false,
