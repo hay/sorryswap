@@ -1,18 +1,21 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__content">
-            <h2 class="recorder__headline">
-                Kies een script
-            </h2>
+    <div class="step"
+         flair="purple">
+        <h1 class="step__headline">Kies je thema</h1>
 
-            <menu class="recorder__list">
+        <img src="/static/img/rabbit.png"
+             class="step__rabbit" />
+
+        <ul class="itemgrid itemgrid--buttons">
+            <li v-for="(script, index) in scripts"
+                class="itemgrid__item">
                 <el-button
-                    v-for="(script, index) in scripts"
+                    type="small"
                     v-bind:focused="focused === index"
                     v-on:click="selectScript(script.name)"
                     v-bind:text="script.name"></el-button>
-            </menu>
-        </div>
+            </li>
+        </ul>
     </div>
 </template>
 

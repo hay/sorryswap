@@ -3,10 +3,10 @@
          flair="stars">
         <h1 class="step__headline">Kies een beroemdheid</h1>
 
-        <ul class="mediagrid">
+        <ul class="itemgrid">
             <li v-for="(video, index) in videos"
-                class="mediagrid__item">
-                <video class="mediagrid__video"
+                class="itemgrid__item">
+                <video class="itemgrid__video"
                        v-bind:data-id="video.id"
                        v-on:mouseenter="playVideo(video.id)"
                        muted playsinline

@@ -1,13 +1,16 @@
-.mediagrid {
+.itemgrid {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
 
-    &__item {
+    &--media &__item {
         background-image: url('../static/img/border-video.png');
         background-repeat: no-repeat;
         background-position: center center;
         background-size: contain;
+    }
+
+    &__item {
         @include flex-center;
         width: calc(100% / 3);
         height: calc(100% / 3);
@@ -20,15 +23,20 @@
         @include wh(100%);
     }
 
-    .el-button {
+    &--media .el-button {
         height: 10rem;
         bottom: -1rem;
         left: -2rem;
         z-index: 1;
     }
 
-    .el-button__text {
+    &--media .el-button__text {
         font-size: 2.5rem;
         top: .5rem;
+    }
+
+    &--buttons .el-button {
+        @include wh(100%);
+        padding: 2rem;
     }
 }

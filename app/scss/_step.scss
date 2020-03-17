@@ -46,6 +46,14 @@
         text-align: center;
     }
 
+    &[flair="purple"] &__headline {
+        @include transform-center-horizontal;
+        top: 4rem;
+        font-size: 14rem;
+        width: 100%;
+        text-align: center;
+    }
+
     &__rabbit {
         width: 43rem;
     }
@@ -54,6 +62,12 @@
         position: absolute;
         bottom: 0;
         left: 5rem;
+    }
+
+    &[flair="purple"] &__rabbit {
+        @include transform-center-horizontal;
+        bottom: -25rem;
+        width: 80rem;
     }
 
     .el-button {
@@ -86,10 +100,18 @@
         line-height: 1.75;
     }
 
-    .mediagrid {
+    &[flair="stars"] .itemgrid {
         position: absolute;
         top: 14rem;
         bottom: 2rem;
+        left: 3rem;
+        right: 3rem;
+    }
+
+    &[flair="purple"] .itemgrid {
+        position: absolute;
+        top: 17rem;
+        bottom: 10rem;
         left: 3rem;
         right: 3rem;
     }
