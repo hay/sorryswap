@@ -11,6 +11,7 @@
         text-transform: lowercase;
         position: relative;
         top: 1rem;
+        left: -1rem;
     }
 
     &[focused] &__text {
@@ -20,5 +21,14 @@
     &--small {
         @include wh(30rem, 20rem);
         background-image: url('../static/img/el-button-small.png');
+    }
+
+    &--big {
+        @include wh(70rem, 17rem);
+        background-image: url('../static/img/el-button-big.png');
+    }
+
+    &--big &__text {
+        font-size: 5.5rem;
     }
 }

@@ -6,11 +6,11 @@
     background-size: cover;
     position: relative;
 
-    &[background="blue"] { background-image: url('../static/img/bg-blue.jpg') }
-    &[background="blue-stars"] { background-image: url('../static/img/bg-blue-stars.jpg') }
-    &[background="purple"] { background-image: url('../static/img/bg-purple.jpg') }
-    &[background="stars"] { background-image: url('../static/img/bg-stars.jpg') }
-    &[background="textbox"] { background-image: url('../static/img/bg-textbox.jpg') }
+    &[flair="blue"] { background-image: url('../static/img/bg-blue.jpg') }
+    &[flair="blue-stars"] { background-image: url('../static/img/bg-blue-stars.jpg') }
+    &[flair="purple"] { background-image: url('../static/img/bg-purple.jpg') }
+    &[flair="stars"] { background-image: url('../static/img/bg-stars.jpg') }
+    &[flair="textbox"] { background-image: url('../static/img/bg-textbox.jpg') }
 
     &__face {
         @include transform-center;
@@ -23,8 +23,58 @@
         top: 5rem;
     }
 
-    &__start {
+    &__headline {
+        font-family: $font-header;
+        font-size: 13rem;
+        color: $c-2;
+        -webkit-text-stroke: 1px $c-3;
+        letter-spacing: 3px;
+        text-shadow: 0 4px 10px rgba(black, 0.5)
+    }
+
+    &[flair="textbox"] &__headline {
+        position: absolute;
+        left: 41rem;
+        top: 4rem;
+    }
+
+    &__rabbit {
+        width: 43rem;
+    }
+
+    &[flair="textbox"] &__rabbit {
+        position: absolute;
+        bottom: 0;
+        left: 5rem;
+    }
+
+    .el-button {
+        position: absolute;
+    }
+
+    &[flair="blue"] .el-button {
         @include transform-center-horizontal;
         bottom: 3rem;
+    }
+
+    &[flair="textbox"] .el-button {
+        right: 20rem;
+        bottom: 5rem;
+    }
+
+    &__text {
+        @include child-margins(3rem);
+        position: absolute;
+        top: 17rem;
+        left: 41rem;
+        right: 27rem;
+        bottom: 23rem;
+    }
+
+    &__text p {
+        font-size: 2.8rem;
+        font-family: $font-text;
+        color: $c-1;
+        line-height: 1.75;
     }
 }

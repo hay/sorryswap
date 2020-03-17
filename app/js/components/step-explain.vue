@@ -1,20 +1,23 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__content">
-            <img class="recorder__logo" src="../../static/img/logo.png" />
+    <div class="step"
+         flair="textbox">
 
-            <section class="recorder__text">
-                <p>Maak je welgemeende excuses zonder het te menen! Leg met 1 druk op de knop jouw ‘het spijt me’ in de mond van een beroemdheid die ooit al eens écht spijt had.</p>
+        <h1 class="step__headline">Welkom</h1>
 
-                <p>Spreek jouw eigen ‘welgemeende’ sorry bij in en hark vergeving op vergeving binnen voor al je zonden!</p>
-            </section>
+        <section class="step__text">
+            <p>Maak je welgemeende excuses zonder het te menen! Leg met 1 druk op de knop jouw ‘het spijt me’ in de mond van een beroemdheid die ooit al eens écht spijt had.</p>
 
-            <el-button
-                focused
-                v-on:click="start"
-                type="big"
-                text="Kies een beroemdheid"></el-button>
-        </div>
+            <p>Spreek jouw eigen ‘welgemeende’ sorry bij in en hark vergeving op vergeving binnen voor al je zonden!</p>
+        </section>
+
+        <img src="/static/img/rabbit.png"
+             class="step__rabbit" />
+
+        <el-button
+            focused
+            v-on:click="start"
+            type="big"
+            text="Kies een beroemdheid"></el-button>
     </div>
 </template>
 

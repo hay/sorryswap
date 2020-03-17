@@ -1,6 +1,6 @@
 <template>
-    <div class="step step--splash"
-         background="blue">
+    <div class="step"
+         flair="blue">
 
         <img src="/static/img/face.png"
              class="step__face" />
