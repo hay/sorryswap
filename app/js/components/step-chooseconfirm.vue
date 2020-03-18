@@ -1,5 +1,5 @@
 <template>
-    <div class="step"
+    <div class="step chooseconfirm"
          flair="blue-stars">
         <div class="step__recorder">
             <video v-bind:src="video.src"
@@ -27,8 +27,7 @@
                 text="Neem op"></el-button>
         </menu>
 
-        <img src="/static/img/rabbit-side.png"
-             class="step__rabbit" />
+        <el-image src="rabbit-side.png"></el-image>
     </div>
 </template>
 

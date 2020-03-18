@@ -3,7 +3,9 @@
         v-bind:class="classes"
         v-bind:focused="focused"
         v-on:click="click">
-        <span class="el-button__text">{{text}}</span>
+        <div class="el-button__wrapper">
+            <span class="el-button__text">{{text}}</span>
+        </div>
     </button>
 </template>
 

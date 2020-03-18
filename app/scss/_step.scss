@@ -1,3 +1,13 @@
+@keyframes headline {
+    from {
+        color: $c-2;
+    }
+
+    to {
+        color: $c-4;
+    }
+}
+
 .step {
     position: relative;
     @include wh(100%);
@@ -20,6 +30,10 @@
         -webkit-text-stroke: 1px $c-3;
         letter-spacing: 3px;
         text-shadow: 0 4px 10px rgba(black, 0.5)
+    }
+
+    &__headline {
+        animation: 1s headline infinite alternate linear;
     }
 
     &__fakecounter {
@@ -49,26 +63,14 @@
         text-align: center;
     }
 
-    &__rabbit {
+    [image="rabbit"] {
         width: 43rem;
-    }
-
-    &[flair="textbox"] &__rabbit {
-        position: absolute;
-        bottom: 0;
-        left: 5rem;
     }
 
     &[flair="purple"] &__rabbit {
         @include transform-center-horizontal;
         bottom: -25rem;
         width: 80rem;
-    }
-
-    &[flair="blue-stars"] &__rabbit {
-        @include transform-center-vertical;
-        width: 30rem;
-        right: 0;
     }
 
     &[flair="blue"] .el-button {
@@ -190,5 +192,11 @@
 
     &__actions > * {
         margin: 0 2rem;
+    }
+
+    &__error {
+        background: white;
+        color: $c-4 !important;
+        padding: 1rem;
     }
 }

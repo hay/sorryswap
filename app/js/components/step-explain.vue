@@ -1,5 +1,5 @@
 <template>
-    <div class="step"
+    <div class="step explain"
          flair="textbox">
 
         <h1 class="step__headline">Welkom</h1>
@@ -10,8 +10,7 @@
             <p>Spreek jouw eigen ‘welgemeende’ sorry bij in en hark vergeving op vergeving binnen voor al je zonden!</p>
         </section>
 
-        <img src="/static/img/rabbit.png"
-             class="step__rabbit" />
+        <el-image src="rabbit.png"></el-image>
 
         <el-button
             focused

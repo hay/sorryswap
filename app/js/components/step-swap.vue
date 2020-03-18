@@ -1,5 +1,5 @@
 <template>
-    <div class="step step--swap"
+    <div class="step explain"
          flair="textbox">
 
         <h1 class="step__headline">Deepfaken...</h1>
@@ -14,8 +14,7 @@
             </p>
         </section>
 
-        <img src="/static/img/rabbit.png"
-             class="step__rabbit" />
+        <el-image src="rabbit.png"></el-image>
 
         <el-button
             class="el-button__first"

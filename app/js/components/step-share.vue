@@ -1,5 +1,5 @@
 <template>
-    <div class="step"
+    <div class="step explain"
          flair="textbox">
 
         <h1 class="step__headline">Klaar!</h1>
@@ -10,12 +10,6 @@
 
                 <p>Met de QR-krijg je een linkje wat vanaf dan de video laat zien.
                 Je kan ook de shortcode hieronder noteren om later de video op te halen.</p>
-
-                <p v-if="!shortcode">
-                    <strong>
-                        Er ging iets mis met het ophalen van je code. Vraag om hulp.
-                    </strong>
-                </p>
             </div>
 
             <div class="step__textcol">
@@ -23,14 +17,16 @@
                     v-if="url"
                     v-bind:text="url"></el-qrcode>
 
-                <pre
-                    v-if="shortcode"
-                    class="recorder__code">{{shortcode}}</pre>
+                <pre v-if="shortcode">{{shortcode}}</pre>
+
+                <p v-if="!shortcode"
+                   class="step__error">
+                    Er ging iets mis met het ophalen van je code. Vraag om hulp.
+                </p>
             </div>
         </section>
 
-        <img src="/static/img/rabbit.png"
-             class="step__rabbit" />
+        <el-image src="rabbit.png"></el-image>
 
         <el-button
             focused
