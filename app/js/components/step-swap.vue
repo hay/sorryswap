@@ -1,38 +1,34 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__content">
-            <h2 class="recorder__headline">
-                Deepfake maken...
+    <div class="step step--swap"
+         flair="textbox">
+
+        <h1 class="step__headline">Deepfaken...</h1>
+
+        <section class="step__text">
+            <h2 class="step__fakecounter">
+                Nog 46 uur, {{time.minutes}} minuten, {{time.seconds}} seconden
             </h2>
 
-            <section v-if="state === 'swapping'"
-                     class="swapping">
-                <img class="swapping__image"
-                     src="/static/img/facescan.gif" alt="" />
+            <p>
+                {{swaptext.text}}
+            </p>
+        </section>
 
-                <div class="swapping__text">
-                    <h3 class="swapping__time">
-                        Nog 46 uur, {{time.minutes}} minuten, {{time.seconds}} seconden
-                    </h3>
+        <img src="/static/img/rabbit.png"
+             class="step__rabbit" />
 
-                    <p class="swapping__time">
-                        {{swaptext.text}}
-                    </p>
-                </div>
-            </section>
+        <el-button
+            class="el-button__first"
+            type="big"
+            v-bind:focused="focused === 0"
+            v-on:click="nextSwapText"
+            v-bind:text="swaptext.btn"></el-button>
 
-            <menu class="recorder__actions recorder__actions--column">
-                <el-button
-                    v-bind:focused="focused === 1"
-                    v-on:click="share"
-                    text="Ok, ga voor de goedkope optie"></el-button>
-
-                <el-button
-                    v-bind:focused="focused === 0"
-                    v-on:click="nextSwapText"
-                    v-bind:text="swaptext.btn"></el-button>
-            </menu>
-        </div>
+        <el-button
+            type="big"
+            v-bind:focused="focused === 1"
+            v-on:click="share"
+            text="Ok, ga voor de goedkope optie"></el-button>
     </div>
 </template>
 

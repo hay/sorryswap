@@ -23,13 +23,19 @@
         top: 5rem;
     }
 
-    &__headline {
+    &__headline,
+    &__fakecounter {
         font-family: $font-header;
         font-size: 13rem;
         color: $c-2;
         -webkit-text-stroke: 1px $c-3;
         letter-spacing: 3px;
         text-shadow: 0 4px 10px rgba(black, 0.5)
+    }
+
+    &__fakecounter {
+        font-size: 5rem;
+        color: $c-1;
     }
 
     &[flair="textbox"] &__headline {
@@ -85,6 +91,18 @@
         position: absolute;
         right: 20rem;
         bottom: 5rem;
+    }
+
+    &[flair="textbox"] .el-button__first {
+        bottom: 20rem;
+    }
+
+    &--swap[flair="textbox"] .el-button {
+        padding: 3rem;
+    }
+
+    &--swap[flair="textbox"] .el-button span {
+        font-size: 4rem;
     }
 
     &__text {
