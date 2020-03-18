@@ -121,8 +121,30 @@
         line-height: 1.75;
     }
 
-    &__text--small p {
+    &__text--2col {
+        display: flex;
+    }
+
+    &__textcol {
+        margin-top: 0;
+        width: 50%;
+        @include child-margins(1rem);
+        border: 1rem solid transparent;
+    }
+
+    &__text--2col p {
         font-size: 2.2rem;
+    }
+
+    &__text pre {
+        font-family: monospace;
+        background: black;
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+        text-align: center;
+        padding: 1rem;
+        letter-spacing: 5px;
     }
 
     &[flair="stars"] .itemgrid {

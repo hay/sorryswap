@@ -4,28 +4,29 @@
 
         <h1 class="step__headline">Klaar!</h1>
 
-        <section class="step__text step__text--small">
-            <p>Je video wordt klaargemaakt. Dit kan een paar minuten tot
-            een uur duren. Op het grote scherm zie je wanneer je video
-            klaar is.</p>
+        <section class="step__text step__text--2col">
+            <div class="step__textcol">
+                <p>Je video wordt klaargemaakt. Dit kan even duren. Op het grote scherm zie je wanneer je video klaar is.</p>
 
-            <p>Met de QR-code hieronder krijg je een linkje wat vanaf dan
-            de video laat zien. Je kan ook de shortcode hieronder noteren
-            om later de video op te halen.</p>
+                <p>Met de QR-krijg je een linkje wat vanaf dan de video laat zien.
+                Je kan ook de shortcode hieronder noteren om later de video op te halen.</p>
 
-            <el-qrcode
-                v-if="url"
-                v-bind:text="url"></el-qrcode>
+                <p v-if="!shortcode">
+                    <strong>
+                        Er ging iets mis met het ophalen van je code. Vraag om hulp.
+                    </strong>
+                </p>
+            </div>
 
-            <pre
-                v-if="shortcode"
-                class="recorder__code">{{shortcode}}</pre>
+            <div class="step__textcol">
+                <el-qrcode
+                    v-if="url"
+                    v-bind:text="url"></el-qrcode>
 
-            <p v-if="!shortcode">
-                <strong>
-                    Er ging iets mis met het ophalen van je code. Vraag om hulp.
-                </strong>
-            </p>
+                <pre
+                    v-if="shortcode"
+                    class="recorder__code">{{shortcode}}</pre>
+            </div>
         </section>
 
         <img src="/static/img/rabbit.png"
