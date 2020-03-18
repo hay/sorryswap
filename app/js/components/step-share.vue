@@ -1,41 +1,41 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__content">
-            <h2 class="recorder__headline">
-                Download je video
-            </h2>
+    <div class="step"
+         flair="textbox">
 
-            <div class="recorder__text">
-                <p>Je video wordt klaargemaakt. Dit kan een paar minuten tot
-                een uur duren. Op het grote scherm zie je wanneer je video
-                klaar is.</p>
+        <h1 class="step__headline">Klaar!</h1>
 
-                <p>Met de QR-code hieronder krijg je een linkje wat vanaf dan
-                de video laat zien. Je kan ook de shortcode hieronder noteren
-                om later de video op te halen.</p>
+        <section class="step__text step__text--small">
+            <p>Je video wordt klaargemaakt. Dit kan een paar minuten tot
+            een uur duren. Op het grote scherm zie je wanneer je video
+            klaar is.</p>
 
-                <el-qrcode
-                    v-if="url"
-                    v-bind:text="url"></el-qrcode>
+            <p>Met de QR-code hieronder krijg je een linkje wat vanaf dan
+            de video laat zien. Je kan ook de shortcode hieronder noteren
+            om later de video op te halen.</p>
 
-                <pre
-                    v-if="shortcode"
-                    class="recorder__code">{{shortcode}}</pre>
+            <el-qrcode
+                v-if="url"
+                v-bind:text="url"></el-qrcode>
 
-                <p v-if="!shortcode">
-                    <strong>
-                        Er ging iets mis met het ophalen van je code. Vraag om hulp.
-                    </strong>
-                </p>
-            </div>
+            <pre
+                v-if="shortcode"
+                class="recorder__code">{{shortcode}}</pre>
 
-            <menu class="recorder__actions">
-                <el-button
-                    focused
-                    v-on:click="again"
-                    text="Klaar"></el-button>
-            </menu>
-        </div>
+            <p v-if="!shortcode">
+                <strong>
+                    Er ging iets mis met het ophalen van je code. Vraag om hulp.
+                </strong>
+            </p>
+        </section>
+
+        <img src="/static/img/rabbit.png"
+             class="step__rabbit" />
+
+        <el-button
+            focused
+            type="small"
+            v-on:click="again"
+            text="OK"></el-button>
     </div>
 </template>
 

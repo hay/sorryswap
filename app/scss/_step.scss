@@ -121,6 +121,10 @@
         line-height: 1.75;
     }
 
+    &__text--small p {
+        font-size: 2.2rem;
+    }
+
     &[flair="stars"] .itemgrid {
         position: absolute;
         top: 14rem;
