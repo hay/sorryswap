@@ -130,10 +130,17 @@
         @include flex-center;
         background-image: url('../static/img/border-video.png');
         padding: 6rem;
+        position: relative;
     }
 
     &__recorder video {
         @include wh(100%);
+    }
+
+    &__recorder-circle {
+        @include transform-center;
+        width: 35rem;
+        top: 20rem;
     }
 
     &__note {

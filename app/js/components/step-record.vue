@@ -6,6 +6,10 @@
                    autoplay
                    playsinline></video>
 
+            <img class="step__recorder-circle"
+                 src="/static/img/face-circle.svg"
+                 alt="" />
+
             <el-countdown
                 ref="countdown"
                 v-bind:from="3"></el-countdown>
