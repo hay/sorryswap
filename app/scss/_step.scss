@@ -12,17 +12,6 @@
     &[flair="stars"] { background-image: url('../static/img/bg-stars.jpg') }
     &[flair="textbox"] { background-image: url('../static/img/bg-textbox.jpg') }
 
-    &__face {
-        @include transform-center;
-        width: 50vw;
-    }
-
-    &__logo {
-        @include transform-center-horizontal;
-        width: 80vw;
-        top: 5rem;
-    }
-
     &__headline,
     &__fakecounter {
         font-family: $font-header;

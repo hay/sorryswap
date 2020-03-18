@@ -1,12 +1,10 @@
 <template>
-    <div class="step"
+    <div class="step splash"
          flair="blue">
 
-        <img src="/static/img/face.png"
-             class="step__face" />
+        <el-image src="face.png"></el-image>
 
-        <img src="/static/img/logo.png"
-             class="step__logo" />
+        <el-image src="logo.png"></el-image>
 
         <el-button
             class="step__start"

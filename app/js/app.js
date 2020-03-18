@@ -5,6 +5,7 @@ import VueSocketIO from 'vue-socket.io'
 
 import App from './components/app.vue';
 import ElButton from './components/el-button.vue';
+import ElImage from './components/el-image.vue';
 import { Keys } from './keys.js';
 import { parseHash } from './router.js';
 import { SoundManager } from './sound-manager.js';
@@ -16,7 +17,9 @@ const vueSocket = new VueSocketIO({
 })
 
 Vue.use(vueSocket);
+
 Vue.component('el-button', ElButton);
+Vue.component('el-image', ElImage);
 
 (async function() {
     const store = new Store({
