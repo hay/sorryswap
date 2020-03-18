@@ -1,8 +1,9 @@
 <template>
     <div class="el-progress"
          ref="progress"
-         v-bind:running="running"
-         v-bind:style="style"></div>
+         v-bind:running="running">
+         <div class="el-progress__bar"
+              v-bind:style="style"></div>
 </template>
 
 <script>

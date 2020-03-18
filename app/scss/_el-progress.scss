@@ -1,15 +1,14 @@
 .el-progress {
     @include wh($recorder-width, 3rem); // Same width as recorder
 
-    &__progress:after {
-        content: '';
+    &__bar {
         display: block;
         @include wh(100%);
         background: $c-3;
         transition-timing-function: linear;
     }
 
-    &__progress[running]:after {
+    &[running] &__bar {
         width: 0%;
     }
 }
