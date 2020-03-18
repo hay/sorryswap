@@ -1,0 +1,28 @@
+@keyframes counting {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2) rotate(5deg);
+    }
+}
+
+.el-countdown {
+    position: absolute;
+    @include pos(0);
+    @include flex-center;
+
+    &__count {
+        @include wh(40rem);
+        background: $c-4;
+        border: 1rem solid $c-2;
+        border-radius: 40rem;
+        color: white;
+        font-size: 20rem;
+        text-align: center;
+        box-shadow: 0 0 5rem $c-3;
+        @include flex-center;
+        transform: scale(0);
+    }
+}

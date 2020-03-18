@@ -6,14 +6,14 @@
                    autoplay
                    playsinline></video>
 
-            <div v-if="count > 0" class="counter">
-                <span>{{count}}</span>
-            </div>
+            <el-countdown
+                ref="countdown"
+                v-bind:from="3"></el-countdown>
         </div>
 
-        <div class="step__progress"
-             ref="progress"
-             v-bind:running="recording"></div>
+        <el-progress
+            v-bind:duration="textbarDuration"
+            v-bind:running="recording"></el-progress>
 
         <el-textbar
             ref="textbar"
@@ -23,14 +23,14 @@
 </template>
 
 <script>
+    import ElCountdown from './el-countdown.vue';
+    import ElProgress from './el-progress.vue';
     import ElTextbar from './el-textbar.vue';
     import Recorder from '../recorder.js';
     import { timeout } from '../util.js';
 
     export default {
-        components : {
-            ElTextbar
-        },
+        components : { ElCountdown, ElProgress, ElTextbar },
 
         computed : {
             script() {
@@ -40,7 +40,7 @@
 
         data() {
             return {
-                count : 0,
+                countdown : false,
                 recorder : null,
                 recording : false,
                 recordingTime : this.$store.state.recordingTime,
@@ -66,22 +66,6 @@
                 this.recording = true;
             },
 
-            async startCount() {
-                for (let i = 3; i >= 0; i--) {
-                    this.count = i;
-
-                    if (i === 0) {
-                        this.$sounds.play('woopwoop');
-                    } else {
-                        this.$sounds.play('beep');
-                    }
-
-                    await timeout(1000);
-                }
-
-                await timeout(1000);
-            },
-
             async stop() {
                 // This might be disabled for debugging purposes
                 if (this.$store.state.uploadVideo) {
@@ -95,10 +79,10 @@
 
         async mounted() {
             this.$music.muted = true;
-            this.$refs.progress.style.transitionDuration = this.recordingTime + 's';
             this.setupRecorder();
+            this.$refs.countdown.setup();
             await timeout(2000);
-            await this.startCount();
+            await this.$refs.countdown.start();
             this.$refs.textbar.run();
             this.start();
             await timeout(this.recordingTime * 1000);

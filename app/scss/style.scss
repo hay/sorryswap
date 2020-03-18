@@ -3,8 +3,8 @@
 @import "fonts";
 @import "mixins";
 @import "base";
-@import "counter";
 @import "el-animation";
+@import "el-countdown";
 @import "el-button";
 @import "el-qrcode";
 @import "el-recorder";
@@ -18,3 +18,4 @@
 @import "step";
 @import "swapping";
 @import "viewer";
+@import "el-progress";

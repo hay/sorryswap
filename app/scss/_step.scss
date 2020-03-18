@@ -126,7 +126,7 @@
 
     &__recorder {
         @include background-center(contain);
-        @include wh(80rem, 45rem);
+        @include wh($recorder-width, 45rem);
         @include flex-center;
         background-image: url('../static/img/border-video.png');
         padding: 6rem;
@@ -150,22 +150,5 @@
 
     &__actions > * {
         margin: 0 2rem;
-    }
-
-    &__progress {
-        @include wh(80rem, 3rem); // Same width as recorder
-    }
-
-    &__progress:after {
-        content: '';
-        display: block;
-        @include wh(100%);
-        background: $c-3;
-        transition-timing-function: linear;
-        transition-duration: 30s;
-    }
-
-    &__progress[running]:after {
-        width: 0%;
     }
 }

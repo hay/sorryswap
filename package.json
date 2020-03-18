@@ -6,8 +6,8 @@
   "scripts": {
     "app-build": "npm run clean && parcel build --public-url '.' app/index.html && npm run copy:target",
     "app-dev": "parcel app/index.html",
-    "clean" : "rm -rf dist",
-    "copy:target" : "mkdir dist/files && cp -rv files/target dist/files/",
+    "clean": "rm -rf dist",
+    "copy:target": "mkdir dist/files && cp -rv files/target dist/files/",
     "dev": "node index.js & npm run app-dev"
   },
   "alias": {
@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@iarna/toml": "^2.2.3",
+    "animejs": "^3.1.0",
     "es6-promise": "^4.2.8",
     "express": "^4.17.1",
     "glob-promise": "^3.4.0",
