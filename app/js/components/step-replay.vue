@@ -1,27 +1,30 @@
 <template>
-    <div class="recorder__step">
-        <div class="recorder__content">
-            <h2 class="recorder__headline">
-                Ben je tevreden?
-            </h2>
-
-            <div class="recorder__singlepane">
-                <video v-bind:src="src"
-                       autoplay loop playsinline></video>
-            </div>
-
-            <menu class="recorder__actions">
-                <el-button
-                    v-bind:focused="focused === 0"
-                    v-on:click="back"
-                    text="Pas aan"></el-button>
-
-                <el-button
-                    v-bind:focused="focused === 1"
-                    v-on:click="ok"
-                    text="Ga verder"></el-button>
-            </menu>
+    <div class="step"
+         flair="blue-stars">
+        <div class="step__recorder">
+            <video v-bind:src="src"
+                   autoplay
+                   loop
+                   playsinline></video>
         </div>
+
+        <div class="step__note">
+            Ben je tevreden?
+        </div>
+
+        <menu class="step__actions">
+            <el-button
+                type="small"
+                v-bind:focused="focused === 0"
+                v-on:click="back"
+                text="Pas aan"></el-button>
+
+            <el-button
+                type="small"
+                v-bind:focused="focused === 1"
+                v-on:click="ok"
+                text="Ga verder"></el-button>
+        </menu>
     </div>
 </template>
 
