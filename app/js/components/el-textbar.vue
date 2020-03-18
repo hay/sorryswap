@@ -9,21 +9,24 @@
 </template>
 
 <script>
+    const LINE_HEIGHT = 43;
+
     export default {
         data() {
             return {
                 style : {
                     'transition-duration' : this.duration + 's',
-                    transform : ''
+                    transform : `translateY(${LINE_HEIGHT}px)`
                 },
-                textHeight : 0
+
+                textHeight : LINE_HEIGHT
             }
         },
 
         methods : {
             run() {
-                const transform = 'translateY(-' + this.textHeight + 'px)';
-                this.style.transform = transform;
+                const y = this.textHeight + LINE_HEIGHT;
+                this.style.transform = `translateY(-${y}px)`;
             }
         },
 

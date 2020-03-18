@@ -73,7 +73,11 @@
                     this.$store.commit('videoId', id);
                 }
 
-                this.$store.commit('step', 'replay');
+                // If the recordingtime is set to zero, never go to the
+                // next step
+                if (this.recordingTime > 0) {
+                    this.$store.commit('step', 'replay');
+                }
             }
         },
 

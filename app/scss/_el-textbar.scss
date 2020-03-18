@@ -21,8 +21,6 @@
     &__textwrapper {
         width: calc(100% - #{$textbar-size * 2});
         height: $textbar-size;
-        position: relative;
-        top: 3.5rem;
     }
 
     &__text {
