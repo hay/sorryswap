@@ -17,13 +17,13 @@
         font-family: $font-header;
         font-size: 13rem;
         color: $c-2;
-        -webkit-text-stroke: 1px $c-3;
         letter-spacing: 3px;
-        text-shadow: 0 4px 10px rgba(black, 0.5)
     }
 
     &__headline {
         animation: 1s headline infinite alternate linear;
+        -webkit-text-stroke: 1px $c-3;
+        text-shadow: 0 4px 10px rgba(black, 0.5)
     }
 
     &__fakecounter {

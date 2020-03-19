@@ -1,7 +1,7 @@
 .el-textbar {
     @include flex-center(row);
     @include wh(100%, $textbar-size);
-    background: url('../static/img/bg-carpet.png');
+    background: white;
     color: $c-1;
     overflow: hidden;
 
