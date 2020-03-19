@@ -1,7 +1,11 @@
 <template>
     <div class="step choosescript"
          flair="purple">
-        <h1 class="step__headline">Kies je thema</h1>
+        <h1 class="step__headline">Kies je script</h1>
+
+        <div class="step__note">
+            Je script komt op autocue zodat je zelf niks hoeft te bedenken.
+        </div>
 
         <el-image src="rabbit.png"></el-image>
 

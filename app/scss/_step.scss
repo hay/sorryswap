@@ -132,8 +132,8 @@
 
     &[flair="purple"] .itemgrid {
         position: absolute;
-        top: 17rem;
-        bottom: 10rem;
+        top: 26rem;
+        bottom: 2rem;
         left: 3rem;
         right: 3rem;
     }
@@ -168,6 +168,11 @@
         text-align: center;
         font-size: 4rem;
         color: $c-1;
+    }
+
+    [flair="purple"] &__note {
+        position: absolute;
+        top: 18rem;
     }
 
     &__actions {
