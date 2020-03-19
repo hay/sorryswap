@@ -171,8 +171,10 @@
     }
 
     [flair="purple"] &__note {
-        position: absolute;
+        @include transform-center-horizontal;
+        width: 100%;
         top: 18rem;
+        padding: 1rem;
     }
 
     &__actions {
