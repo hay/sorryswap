@@ -1,8 +1,8 @@
-.explain {
+.choosescript {
     [image="rabbit"] {
-        position: absolute;
-        bottom: 0;
-        left: 5rem;
+        @include transform-center-horizontal;
+        bottom: -25rem;
+        width: 80rem;
     }
 
     [image="rabbit"] img {

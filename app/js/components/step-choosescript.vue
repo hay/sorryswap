@@ -1,10 +1,9 @@
 <template>
-    <div class="step"
+    <div class="step choosescript"
          flair="purple">
         <h1 class="step__headline">Kies je thema</h1>
 
-        <img src="/static/img/rabbit.png"
-             class="step__rabbit" />
+        <el-image src="rabbit.png"></el-image>
 
         <ul class="itemgrid itemgrid--buttons">
             <li v-for="(script, index) in scripts"
