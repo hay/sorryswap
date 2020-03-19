@@ -1,0 +1,17 @@
+.index {
+    @include flex-center;
+    background: black;
+    color: white;
+    min-height: 100vh;
+
+    [image="logo"] {
+        display: block;
+        max-width: 50rem;
+        margin-bottom: 3rem;
+    }
+
+    button {
+        color: white;
+        text-decoration: underline;
+    }
+}

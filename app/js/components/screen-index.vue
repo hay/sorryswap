@@ -1,16 +1,15 @@
 <template>
-    <div class="recorder">
-        <div class="recorder__content">
-            <img class="recorder__logo recorder__logo--splash"
-                 src="../../static/img/logo.png" />
+    <div class="index">
+        <el-image src="logo.png"></el-image>
 
-            <menu class="recorder__list">
-                <el-button
-                    v-for="screen in screens"
-                    v-on:click="go(screen)"
-                    v-bind:text="screen"></el-button>
-            </menu>
-        </div>
+        <ul class="index__list">
+            <li v-for="screen in screens">
+                <button
+                    v-on:click="go(screen)">
+                    {{screen}}
+                </button>
+            </li>
+        </ul>
     </div>
 </template>
 
