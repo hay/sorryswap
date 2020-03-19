@@ -52,7 +52,7 @@
 
             <a v-bind:href="videoSrc"
                download
-               class="el-button el-button--download">
+               class="share__text">
                 Download je video</a>
         </section>
     </div>
