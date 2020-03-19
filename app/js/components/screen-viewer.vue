@@ -1,14 +1,22 @@
 <template>
-    <div class="viewer" v-on:click="playVideo">
-        <img class="viewer__logo" src="../../static/img/logo.png" />
+    <div class="viewer">
+        <div class="step"
+             v-on:click="playVideo"
+             flair="blue-stars">
+            <el-image src="rabbit.png"></el-image>
 
-        <video
-            class="viewer__video"
-            ref="video"
-            v-bind:src="src"
-            autoplay></video>
+            <el-image src="logo.png"></el-image>
 
-        <recorder-state class="recorder-state--viewer"></recorder-state>
+            <div class="step__recorder">
+                <video
+                    ref="video"
+                    v-bind:src="src"
+                    v-bind:muted="muted"
+                    autoplay></video>
+            </div>
+
+            <recorder-state class="recorder-state--viewer"></recorder-state>
+        </div>
     </div>
 </template>
 
@@ -22,6 +30,10 @@
         },
 
         computed : {
+            muted() {
+                return this.$store.state.muted;
+            },
+
             src() {
                 if (!this.video) return '';
 

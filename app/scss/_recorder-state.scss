@@ -16,13 +16,11 @@
     }
 
     &--viewer {
-        border: 1rem solid $c-1;
-        background: rgba(255, 255, 255, 0.9);
-        border-bottom: 0;
-        padding: 2rem;
-        border-top-left-radius: 2rem;
-        border-top-right-radius: 2rem;
-        margin-top: 3rem;
+        background: url('../static/img/bg-carpet.png');
+        padding: 1rem;
+        text-align: center;
+        font-size: 3rem;
+        color: $c-1;
         transition: 1s;
         position: absolute;
         bottom: -25vh;
@@ -31,6 +29,11 @@
         max-width: 80rem;
         width: 100%;
         @include margin-center;
+    }
+
+    &--viewer p {
+        position: relative;
+        top: 3px;
     }
 
     &[visible] {
@@ -43,15 +46,10 @@
     }
 
     &__recording {
-        @include wh(4rem);
-        border-radius: 4rem;
+        @include wh(3rem);
+        border-radius: 3rem;
         background: $c-4;
         animation: record 1s infinite linear alternate;
         margin-right: 1rem;
-    }
-
-    &__message p {
-        font-size: 2.4rem;
-        color: black;
     }
 }

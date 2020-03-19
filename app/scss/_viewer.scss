@@ -1,0 +1,19 @@
+.viewer {
+    @include fixed-screen;
+
+    .step {
+        justify-content: flex-start;
+    }
+
+    [image="logo"] {
+        width: 90rem;
+        margin-top: 0;
+        z-index: 1;
+    }
+
+    [image="rabbit"] {
+        @include transform-center-horizontal;
+        bottom: -6rem;
+        width: 120rem;
+    }
+}
