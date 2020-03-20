@@ -8,7 +8,7 @@
             <div class="step__textcol">
                 <p>Je video wordt klaargemaakt. Dit kan even duren. Op het grote scherm zie je wanneer je video klaar is.</p>
 
-                <p>Met de QR-krijg je een linkje wat vanaf dan de video laat zien.
+                <p>Met de QR-code krijg je een linkje wat vanaf dan de video laat zien.
                 Je kan ook de shortcode hieronder noteren om later de video op te halen.</p>
             </div>
 

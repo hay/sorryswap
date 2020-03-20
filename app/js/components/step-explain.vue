@@ -5,9 +5,9 @@
         <h1 class="step__headline">Welkom</h1>
 
         <section class="step__text">
-            <p>Maak je welgemeende excuses zonder het te menen! Leg met 1 druk op de knop jouw ‘het spijt me’ in de mond van een beroemdheid die ooit al eens écht spijt had.</p>
+            <p>Maak je welgemeende excuses zonder het te menen! Leg met één druk op de knop jouw ‘het spijt me’ in de mond van een beroemdheid die ooit al eens écht spijt had.</p>
 
-            <p>Spreek jouw eigen ‘welgemeende’ sorry bij in en hark vergeving op vergeving binnen voor al je zonden!</p>
+            <p>Spreek jouw eigen ‘welgemeende’ bij in en hark vergeving binnen voor al je zonden!</p>
         </section>
 
         <el-image src="rabbit.png"></el-image>
