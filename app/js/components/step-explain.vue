@@ -7,7 +7,7 @@
         <section class="step__text">
             <p>Maak je welgemeende excuses zonder het te menen! Leg met één druk op de knop jouw ‘het spijt me’ in de mond van een beroemdheid die ooit al eens écht spijt had.</p>
 
-            <p>Spreek jouw eigen ‘welgemeende’ bij in en hark vergeving binnen voor al je zonden!</p>
+            <p>Spreek jouw eigen ‘welgemeende’ sorry in en hark vergeving binnen voor al je zonden!</p>
         </section>
 
         <el-image src="rabbit.png"></el-image>
