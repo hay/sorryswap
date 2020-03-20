@@ -3,34 +3,39 @@
         <div class="el-textbar__textwrapper">
             <div v-bind:style="style"
                  class="el-textbar__text"
-                 ref="text">{{text}}</div>
+                 ref="text">
+                 <p>{{text}}</p>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-    const LINE_HEIGHT = 43;
+    import { timeout } from '../util.js';
 
     export default {
         data() {
             return {
                 style : {
                     'transition-duration' : this.duration + 's',
-                    transform : `translateY(${LINE_HEIGHT}px)`
+                    transform : `translateY(0px)`
                 },
 
-                textHeight : LINE_HEIGHT
+                textHeight : 0
             }
         },
 
         methods : {
             run() {
-                const y = this.textHeight + LINE_HEIGHT;
+                const y = this.textHeight;
                 this.style.transform = `translateY(-${y}px)`;
             }
         },
 
-        mounted() {
+        async mounted() {
+            // FIXME: for some reason it doesn't pick up the height without
+            // this timeout
+            await timeout(1000);
             const box = this.$refs.text.getBoundingClientRect();
             this.textHeight = box.height;
         },

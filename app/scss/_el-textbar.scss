@@ -30,5 +30,6 @@
         line-height: 1.5;
         transition-timing-function: linear;
         white-space: pre-line;
+        padding-top: $textbar-size; // Get a bit of lead-in
     }
 }
