@@ -17,4 +17,10 @@
     [image="logo"] img {
         animation: logo 5s infinite linear alternate;
     }
+
+    &__gif {
+        position: absolute;
+        transform: translateX(-50vw), translateY(calc(50vh - 144px));
+        @include wh(496px, 288px);
+    }
 }
